@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Col, Row, Container, Button } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import "../styles/Login.css";
 
 function Register() {
   const navigate = useNavigate();

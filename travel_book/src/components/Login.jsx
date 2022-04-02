@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Login.css"
+import "../styles/Login.css"
 import { FcGoogle } from "react-icons/fc"
 import {Col, Form, Button, Row, Container} from "react-bootstrap"
 import {useNavigate} from "react-router-dom"
