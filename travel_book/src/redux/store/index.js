@@ -6,9 +6,9 @@ import { encryptTransform } from 'redux-persist-transform-encrypt'
 
 
 export const initialState = {
-    // favourites: {
-    //   elements: [],
-    // },
+    user: {
+      
+    },
     // jobs: {
     //   elements: [],
     // },
