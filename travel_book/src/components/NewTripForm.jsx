@@ -16,6 +16,13 @@ const NewTripForm = (props) =>{
     userId:"624edd5d2e773b6d05fa070c"
   });
 
+  const transportArr = [
+    "train",
+    "plane",
+    "bycecle"
+
+  ]
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("accessToken")
@@ -46,8 +53,31 @@ const NewTripForm = (props) =>{
     });
    
   }
+
+  const handleCheckBox= (e)=>{
+    if (e.target.checked) {
+      setFormData({
+        ...formData,
+        transport: [...formData.transport, e.target.value],
+      })
+    } else {
+      const transportMethod = formData.transport.filter(
+        (method) => method !== e.target.value
+      )
+      console.log('newRecipieMethod', transportMethod)
+      setFormData({
+        ...formData,
+        transport: [...transportMethod],
+      })
+    }
+  }
+  console.log(
+    'formData.prepMethods out of handlePrepCheckboxes',
+    formData.transport
+  )
   
- 
+  
+
   return (
     <>
       <Form onSubmit={handleFormSubmit}>
@@ -100,61 +130,23 @@ const NewTripForm = (props) =>{
             placeholder="Password" />
           </Form.Group>
         </Form.Row>
+       
+        <Form.Group>
+        {transportArr.map((method) => (
+                            <Form.Check
+                              inline
+                              key={`${method}`}
+                              label={`${method}`}
+                              name={`${method}`}
+                              value={`${method}`}
+                              onChange={handleCheckBox}
 
-        {["checkbox"].map((type) => (
-          <div key={`inline-${type}`} className="mb-3 text-white">
-            <Form.Check
-              inline
-              label={<FaShip />}
-              name="group1"
-              // checked={formData.transport}
-            
-              type={type}
-              id={`inline-${type}-1`}
-            />
-            <Form.Check
-              inline
-              label={<FaPlane />}
-              name="group1"
-              // checked={formData.transport}
-             
-              type={type}
-              id={`inline-${type}-2`}
-            />
-            <Form.Check
-              inline
-              label="2"
-              name="group1"
-              // checked={formData.transport}
-              type={type}
-              id={`inline-${type}-2`}
-            />
-            <Form.Check
-              inline
-              label="2"
-              name="group1"
-              type={type}
-              id={`inline-${type}-2`}
-            />
-            <Form.Check
-              inline
-              label="2"
-              name="group1"
-              checked={formData.transport}
-              type={type}
-              id={`inline-${type}-2`}
-            />
-            <Form.Check
-              inline
-              label="2"
-              name="group1"
-              checked={formData.transport}
-              type={type}
-              id={`inline-${type}-2`}
-            />
-          </div>
-        ))}
-
+                              type="checkbox"
+                              className="prepMethodsClass"
+                            />
+                          ))}
+                           </Form.Group>
+     
         
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
