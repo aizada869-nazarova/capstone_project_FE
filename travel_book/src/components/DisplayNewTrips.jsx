@@ -30,7 +30,7 @@ function DisplayNewTrips() {
 <Container>
   <Row>
      {trips.map(trip=>(
-       <Col xs={12} key={trip._id}>
+       <Col xs={12} md={4} key={trip._id}>
          <SingleTrip data={trip}  />
        </Col>
      ))

@@ -6,11 +6,7 @@ import Sidebar from "./Sidebar";
 import DisplayNewTrips from "./DisplayNewTrips";
 
 function Home() {
-  // const [show, setShow] = useState(false);
-  // const selected = () => {
-  //   console.log("clicked");
-  //   setShow(!show);
-  // };
+
 
 
   return (
