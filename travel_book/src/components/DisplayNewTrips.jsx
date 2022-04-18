@@ -5,6 +5,7 @@ import {Col, Row, Container} from "react-bootstrap"
 function DisplayNewTrips() {
   const url = "http://localhost:3001/travels"
   const [trips, setTrips]=useState([])
+  
 
   const fetchTrips = async () => {
     const token = localStorage.getItem("accessToken");
@@ -29,9 +30,9 @@ function DisplayNewTrips() {
   return (
 <Container>
   <Row>
-     {trips.map(trip=>(
-       <Col xs={12} md={4} key={trip._id}>
-         <SingleTrip data={trip}  />
+     {trips.map((trip, i)=>(
+       <Col xs={12} md={4} key={trip._id}  className="d-flex justify-content-center">
+         <SingleTrip data={trip} index={i} />
        </Col>
      ))
 

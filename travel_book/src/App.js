@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./components/Home"
 import Register from './components/Register';
-import Sidebar from './components/Sidebar';
+import Trip from './components/Trip';
+
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="travels/:travelId" element={<Trip />} />
           {/* <Route path="/profile/me" element={<MyProfile />} /> */}
         </Routes>
       </BrowserRouter>

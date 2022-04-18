@@ -14,11 +14,13 @@ function Home() {
    
    <Sidebar/>
    <Container>
-     <Row>
+     <Row className="justify-content-md-center d-flex">
+      
        <div className="mx-auto">
        <NewTripForm/>
-       <DisplayNewTrips/>
+       {/* <DisplayNewTrips/> */}
        </div>
+       
      </Row>
    </Container>
    </>
