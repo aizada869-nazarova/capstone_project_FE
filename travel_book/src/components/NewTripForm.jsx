@@ -4,7 +4,7 @@ import { Container, Form, Button, Col, Row, Modal } from "react-bootstrap";
 import { FaPlane, FaShip } from "react-icons/fa";
 import SingleTrip from "./SingleTrip";
 
-const NewTripForm = (props) => {
+const NewTripForm = () => {
   const url = "http://localhost:3001/travels";
 
   const [trips, setTrips] = useState([]);
@@ -212,6 +212,7 @@ const NewTripForm = (props) => {
             <Button variant="success" type="submit">
               Add
             </Button>
+            
           </Form>
         </Modal.Body>
       </Modal>

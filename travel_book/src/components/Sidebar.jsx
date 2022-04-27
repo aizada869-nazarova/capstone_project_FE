@@ -1,64 +1,65 @@
-import React, {useState}from 'react'
+import React, { useState } from "react";
 import "../styles/Sidebar.css";
-import { FaHome, FaLuggageCart, FaPlane } from "react-icons/fa"
-import { FiLogOut } from "react-icons/fi"
+import { FaHome, FaLuggageCart, FaPlane } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+import {Link} from "react-router-dom"
+
 function Sidebar() {
-    const [show, setShow] = useState(false);
-    const [activeIndex, setActiveIndex]= useState(false)
+  const [show, setShow] = useState(false);
+  const [activeId, setActiveId] = useState(null);
 
-    const selected = () => {
-      console.log("clicked");
-      setShow(!show);}
+  const values = [
+    { id: 1, icon: <FaHome />, text: "Home", to:"/" },
+    { id: 2, icon: <FaPlane />, text: "Past trips", to:"/visitedCountry" },
+    { id: 3, icon: <FaHome />, text: "Map", to:"/visitedCountry"  },
+    { id: 4, icon: <FiLogOut />, text: "Logout", to:"/visitedCountry"  },
+  ];
 
-     const handleClick = (index) =>{ 
-      setActiveIndex(!activeIndex)
-    console.log("clicked")
-    }
-
-
+  const selected = () => {
+    console.log("clicked");
+    setShow(!show);
+  };
 
   return (
     <>
-      <div
-        className={show ? "navigation open" : "navigation"}
-        
-      >
+      <div className={show ? "navigation open" : "navigation"}>
         <div className="menutoggle" onClick={selected}></div>
-        <ul className="ul">
-          <li className={activeIndex ? "list active" : "list"} index={0}  onClick={ handleClick}>
-            <a href="#">
-              <span className="icon"><FaHome/></span>
+        <ul className="ul"> 
+
+        {values.map(val=>( <li onClick={()=>setActiveId(val.id)} className={activeId===val.id ? "list active" : "list"} key={val.id}>
+        
+        <Link to={val.to}>
+              <span className="icon">{val.icon}</span>
               
-              <span className="text">Home</span>
-
-            </a>
-          </li>
-          <li className={activeIndex ? "list active" : "list"} index={1} isActive={activeIndex===1} onClick={ handleClick}>
+              <span className="text">{val.text}</span>
+              </Link>
+          
+          </li>))}
+          </ul>
+        {/* {values.map(val=>( <li onClick={()=>setActiveId(val.id)} className={activeId===val.id ? "list active" : "list"}>
             <a href="#">
-              <span className="icon"><FaLuggageCart/></span>
+              <span className="icon">{val.icon}</span>
               
-              <span className="text">Packing</span>
+              <span className="text">{val.text}</span>
 
             </a>
-          </li> <li className="list" tabIndex={2} isActive={activeIndex===2} onClick={ handleClick}>
-            <a href="#">
-              <span className="icon"> <FaPlane/></span>
-             
-              <span className="text">Visited countries</span>
+          </li>))}
 
-            </a>
-          </li> <li className="list" tabIndex={3} isActive={activeIndex===3} onClick={ handleClick}>
-            <a href="#">
-              <span className="icon"><FiLogOut/></span>
-              
-              <span className="text">Logout</span>
-
-            </a>
-          </li>
-        </ul>
+        {/* <div className="ul">
+          {values.map((val) => (
+            <Nav.Link
+              href="#overview"
+              onClick={() => setActiveId(val.id)}
+              className={activeId === val.id ? "list active" : "list"}
+            >
+              <span className="icon a">{val.icon}</span>{" "}
+              <span className="text">{val.text}</span>
+            </Nav.Link> */}
+         
+       
       </div>
     </>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;

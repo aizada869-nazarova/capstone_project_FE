@@ -4,6 +4,7 @@ import "../styles/Sidebar.css";
 import { Container, Row,Col } from "react-bootstrap";
 import Sidebar from "./Sidebar";
 import DisplayNewTrips from "./DisplayNewTrips";
+import AddVisitedCountry from "./AddVisitedCountry";
 
 function Home() {
 
@@ -18,6 +19,7 @@ function Home() {
       
        <div className="mx-auto">
        <NewTripForm/>
+       {/* <AddVisitedCountry/> */}
        {/* <DisplayNewTrips/> */}
        </div>
        

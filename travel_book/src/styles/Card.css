@@ -17,6 +17,7 @@
     border-left-color:  rgba(225, 225, 225, 0.5);
     border-bottom-color:  rgba(225, 225, 225, 0.1);
     border-right-color:  rgba(225, 225, 225, 0.1);
+    position: relative;
 }
 
 .cb1{
@@ -36,4 +37,13 @@
     background: #ce9f11;
     font-size: small;
     width: 100px;
+}
+
+.edit_button{
+position: absolute;
+top: 20px;
+left: 20px;
+font-size: small;
+width: 25px;
+display: flex
 }
