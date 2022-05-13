@@ -1,30 +1,32 @@
 import React, { useState } from "react";
 import NewTripForm from "./NewTripForm";
-import "../styles/Sidebar.css";
-import { Container, Row,Col } from "react-bootstrap";
+// import "../styles/Sidebar.css";
+import "../styles/Home.css";
+import { Container, Row,Col, Navbar, Button} from "react-bootstrap";
 import Sidebar from "./Sidebar";
 import DisplayNewTrips from "./DisplayNewTrips";
 import AddVisitedCountry from "./AddVisitedCountry";
+import NavbarHome from "./NavbarHome";
 
-function Home() {
+
+
+const Home=() => {
 
 
 
   return (
    <>
-   
-   <Sidebar/>
+    <Container fluid className="home d-flex" >
+  
+   <NavbarHome />
+  
    <Container>
-     <Row className="justify-content-md-center d-flex">
-      
-       <div className="mx-auto">
-       <NewTripForm/>
-       {/* <AddVisitedCountry/> */}
-       {/* <DisplayNewTrips/> */}
-       </div>
-       
-     </Row>
+   <NewTripForm/>
+ 
    </Container>
+   
+   </Container>
+
    </>
   );
 }

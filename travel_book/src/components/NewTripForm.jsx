@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
+
+import { FaPlaneArrival, FaPlaneDeparture } from "react-icons/fa";
 import DisplayNewTrips from "./DisplayNewTrips";
-import { Container, Form, Button, Col, Row, Modal } from "react-bootstrap";
-import { FaPlane, FaShip } from "react-icons/fa";
+import {
+  Container,
+  Form,
+  Button,
+  Col,
+  Row,
+  Modal,
+  InputGroup,
+  FormControl,
+} from "react-bootstrap";
 import SingleTrip from "./SingleTrip";
 
 const NewTripForm = () => {
@@ -14,21 +24,30 @@ const NewTripForm = () => {
   const closeAddTrip = () => setAddTrip(false);
   const showAddTrip = () => setAddTrip(true);
 
-  const [to, setTo] = useState("");
-  const [from, setFrom] = useState("");
+  const [toCityName, setToCityName] = useState("");
+  const [fromCityName, setFromCityName] = useState("");
+  const [toCountryName, setToCountryName] = useState("");
+  const [fromCountryName, setFromCountryName] = useState("");
+
   const [departureDate, setDepartureDate] = useState("");
+  const [departureTime, setDepartureTime] = useState("");
   const [transport, setTransport] = useState([]);
   const [travelWith, setTravelWith] = useState([]);
   const [arrivalDate, setArrivalDate] = useState("");
+  const [arrivalTime, setArrivalTime] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const trip = {
-      from: from,
-      to: to,
+      fromCityName: fromCityName,
+      fromCountryName: fromCountryName,
+      toCityName: toCityName,
+      toCountryName: toCountryName,
       departureDate: departureDate,
-      arrivalDate: arrivalDate || null,
+      departureTime: departureTime,
+      arrivalDate: arrivalDate,
+      arrivalTime: arrivalTime,
       transport: transport,
       travelWith: travelWith,
       userId: "6259d0ef3c13cbc5bbdb7caa",
@@ -91,128 +110,224 @@ const NewTripForm = () => {
   }, [tripChanged]);
 
   return (
-    <div className="profile-sub-section mt-4 single-list-item">
-      <Row className="justify-content-between px-3">
-        <h4 className="pt-4 pl-3">trip</h4>
-        <Button variant="success" onClick={showAddTrip}>
-          Add
-        </Button>
+    <div className="new-trip-top_margin pt-3">
+      <Row className="justify-content-center mb-3">
+        <Col xs={12} md={8} lg={6}>
+          <h1 className="pl-2">Coming Trips: {trips.length} </h1>{" "}
+        </Col>
+        <Col xs={8} md={4} lg={3} className="d-flex align-items-center">
+          <Button
+            variant="warning"
+            className="add_trips rounded-pill"
+            onClick={showAddTrip}
+          >
+            <strong>Add</strong>
+          </Button>
+        </Col>
       </Row>
 
-      <Container>
-        <Row>
-          {trips &&
-            trips.map(
-              (
-                {
-                  to,
-                  _id: id,
-                  from,
-                  departureDate,
-                  travelWith,
-                  transport,
+      {/* <Container className="d-flex justify-content-center"> */}
+      <Row className="d-flex justify-content-center" style={{ rowGap: "10px" }}>
+        {trips &&
+          trips.map(
+            (
+              {
+                toCityName,
+                toCountryName,
+                fromCityName,
+                fromCountryName,
+                arrivalTime,
+                _id: id,
+                from,
+                departureDate,
+                departureTime,
+                travelWith,
+                transport,
 
-                  arrivalDate,
-                },
-                i
-              ) => (
-                <Col
-                  xs={12}
-                  md={4}
-                  key={id}
-                  className="d-flex justify-content-center"
-                >
-                  <SingleTrip
-                    index={i}
-                    to={to}
-                    id={id}
-                    from={from}
-                    travelWith={travelWith}
-                    departureDate={departureDate}
-                    transport={transport}
-                    arrivalDate={arrivalDate}
-                    tripChanged={tripChanged}
-                    setTripChanged={() => setTripChanged((count) => count + 1)}
-                  />
-                </Col>
-              )
-            )}
-        </Row>
-      </Container>
+                arrivalDate,
+              },
+              i
+            ) => (
+              <Col
+                xs={8}
+                md={4}
+                lg={3}
+                key={id}
+                className="d-flex justify-content-center"
+              >
+                <SingleTrip
+                  index={i}
+                  toCityName={toCityName}
+                  toCountryName={toCountryName}
+                  fromCityName={fromCityName}
+                  fromCountryName={fromCountryName}
+                  arrivalTime={arrivalTime}
+                  id={id}
+                  from={from}
+                  travelWith={travelWith}
+                  departureDate={departureDate}
+                  departureTime={departureTime}
+                  transport={transport}
+                  arrivalDate={arrivalDate}
+                  tripChanged={tripChanged}
+                  setTripChanged={() => setTripChanged((count) => count + 1)}
+                />
+              </Col>
+            )
+          )}
+      </Row>
+      {/* </Container> */}
 
       <Modal show={addTrip} onHide={closeAddTrip}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Experience</Modal.Title>
+          <Modal.Title>Add coming trip</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            <Form.Group>
-              <Form.Label>From</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="to"
-                value={from}
-                onChange={(e) => setFrom(e.target.value)}
-                required
-              />
-            </Form.Group>
+            <Form.Row>
+              <Col sm="2">
+                <Form.Label>From</Form.Label>
+              </Col>
+              <Col xs="5">
+                <Form.Control
+                  className="mb-2"
+                  id="inlineFormInput"
+                  placeholder="City"
+                  type="text"
+                  value={fromCityName}
+                  onChange={(e) => setFromCityName(e.target.value)}
+                  required
+                />
+              </Col>
+              <Col xs="5">
+                {/* <Form.Label htmlFor="inlineFormInput" srOnly>
+                  Country
+                </Form.Label> */}
+                <Form.Control
+                  className="mb-2"
+                  id="inlineFormInput"
+                  placeholder="Country"
+                  type="text"
+                  value={fromCountryName}
+                  onChange={(e) => setFromCountryName(e.target.value)}
+                  required
+                />
+              </Col>
+            </Form.Row>
 
-            <Form.Group>
-              <Form.Label>To</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="from"
-                value={to}
-                onChange={(e) => setTo(e.target.value)}
-                required
-              />
-            </Form.Group>
+            <Form.Row>
+              <Col sm="2">
+                <Form.Label>To</Form.Label>
+              </Col>
+              <Col xs="5">
+                <Form.Control
+                  className="mb-2"
+                  id="inlineFormInput"
+                  placeholder="City"
+                  type="text"
+                  value={toCityName}
+                  onChange={(e) => setToCityName(e.target.value)}
+                  required
+                />
+              </Col>
+              <Col xs="5">
+                {/* <Form.Label htmlFor="inlineFormInput" srOnly>
+                  Country
+                </Form.Label> */}
+                <Form.Control
+                  className="mb-2"
+                  id="inlineFormInput"
+                  placeholder="Country"
+                  type="text"
+                  value={toCountryName}
+                  onChange={(e) => setToCountryName(e.target.value)}
+                  required
+                />
+              </Col>
+            </Form.Row>
 
-            <Form.Group>
-              <Form.Label>transport</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="transport"
-                value={transport}
-                onChange={(e) => setTransport(e.target.value)}
-                required
-              />
-            </Form.Group>
+            <Form.Row>
+              <Form.Group as={Col} controlId="formGridTransport">
+                <Form.Label>Transport</Form.Label>
+                <Form.Control
+                  placeholder="ex: plane, car..."
+                  type="text"
+                  value={transport}
+                  onChange={(e) => setTransport(e.target.value)}
+                />
+              </Form.Group>
 
-            <Form.Group>
-              <Form.Label>Travel with</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="travel with..."
-                value={travelWith}
-                onChange={(e) => setTravelWith(e.target.value)}
-                required
-              />
-            </Form.Group>
+              <Form.Group as={Col} controlId="formGridTravelWith">
+                <Form.Label>Traveling with</Form.Label>
+                <Form.Control
+                  placeholder="ex: family, friend..."
+                  type="text"
+                  value={travelWith}
+                  onChange={(e) => setTravelWith(e.target.value)}
+                />
+              </Form.Group>
+            </Form.Row>
 
-            <Form.Group>
-              <Form.Label>Start Date</Form.Label>
-              <Form.Control
-                type="date"
-                value={departureDate}
-                onChange={(e) => setDepartureDate(e.target.value)}
-                required
-              />
-            </Form.Group>
+            <Form.Row>
+              <Col xs={8}>
+                <InputGroup className="mb-2">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      <FaPlaneDeparture />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <FormControl
+                    id="inlineFormInputGroup"
+                    placeholder="Departure"
+                    type="date"
+                    value={departureDate}
+                    onChange={(e) => setDepartureDate(e.target.value)}
+                    required
+                  />
+                </InputGroup>
+              </Col>
+              <Col>
+                <Form.Control
+                  placeholder="Time"
+                  type="time"
+                  value={departureTime}
+                  onChange={(e) => setDepartureTime(e.target.value)}
+                />
+              </Col>
+            </Form.Row>
 
-            <Form.Group>
-              <Form.Label>End Date</Form.Label>
-              <Form.Control
-                type="date"
-                value={arrivalDate}
-                onChange={(e) => setArrivalDate(e.target.value)}
-              />
-            </Form.Group>
+            <Form.Row>
+              <Col xs={8}>
+                <InputGroup className="mb-2">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      {" "}
+                      <FaPlaneArrival />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <FormControl
+                    id="inlineFormInputGroup"
+                    placeholder="Arrival"
+                    type="date"
+                    value={arrivalDate}
+                    onChange={(e) => setArrivalDate(e.target.value)}
+                    required
+                  />
+                </InputGroup>
+              </Col>
+              <Col>
+                <Form.Control
+                  placeholder="Time"
+                  type="time"
+                  value={arrivalTime}
+                  onChange={(e) => setArrivalTime(e.target.value)}
+                />
+              </Col>
+            </Form.Row>
 
-            <Button variant="success" type="submit">
+            <Button variant="success" type="submit" onClick={closeAddTrip}>
               Add
             </Button>
-            
           </Form>
         </Modal.Body>
       </Modal>

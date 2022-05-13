@@ -1,13 +1,22 @@
-import React from 'react'
-import "../styles/Login.css"
-import { FcGoogle } from "react-icons/fc"
-import {Col, Form, Button, Row, Container} from "react-bootstrap"
-import {useNavigate} from "react-router-dom"
-import {useState} from "react"
-
+import React from "react";
+import "../styles/Login.css";
+import { FcGoogle } from "react-icons/fc";
+import {
+  Col,
+  Form,
+  Button,
+  Row,
+  Container,
+  InputGroup,
+  FormControl,
+} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
+import LockIcon from "@material-ui/icons/Lock";
 function Login() {
   const url = "http://localhost:3001/users/login";
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -26,22 +35,21 @@ function Login() {
       });
 
       if (response.ok) {
-        const users = await response.json()
-       localStorage.setItem("accessToken", users.accessToken)
-       navigate("/")
-       
+        const users = await response.json();
+        localStorage.setItem("accessToken", users.accessToken);
+        navigate("/");
+
         setData({
           email: "",
           password: "",
         });
       } else {
-        alert("Something went wrong!")
+        alert("Something went wrong!");
       }
     } catch (error) {
       console.log(error);
     }
   };
-
 
   const handleInput = (fieldName, value) => {
     setData({
@@ -50,22 +58,21 @@ function Login() {
     });
   };
   return (
-    // <div className='body d-flex'>
-    
-
-    <Container className='d-flex justify-content-center login align-self-center'>
-      <Row className="d-flex justify-content-center main_form">
-        <Col md={12}>
-        <Form onSubmit={handleSubmit}  >
-          <Container>
-            <Row>
-
-         <Col md={12}>
-          <h1 className="mb-5 text-light"><strong>Log in</strong></h1>
-          </Col>
+    <div className="body_back d-flex">
+      <Container className="d-flex justify-content-center login align-self-center align-center">
+        <Row className="d-flex justify-content-center main_form">
           <Col md={12}>
-          <Form.Label className="text-light">Email address</Form.Label>
-          <Form.Control
+            <Form onSubmit={handleSubmit}>
+              <Container>
+                <Row>
+                  <Col md={12}>
+                    <h1 className="mb-4 mt-4 text-dark">
+                      <strong>Login</strong>
+                    </h1>
+                  </Col>
+                  <Col md={12}>
+                    <Form.Label className="text-dark">Email address</Form.Label>
+                    {/* <Form.Control
             className="rounded-pill bg-dark text-light"
             type="email"
             placeholder="Enter email"
@@ -73,11 +80,29 @@ function Login() {
             onChange={(e) => {
               handleInput("email", e.target.value);
             }}
-          />
-          </Col>
-          <Col md={12}>
-          <Form.Label className="text-light">Password</Form.Label>
-          <Form.Control
+          /> */}
+
+                    <InputGroup className="mb-2">
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>
+                          <AlternateEmailIcon />
+                        </InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <FormControl
+                        id="inlineFormInputGroup"
+                        type="email"
+                        placeholder="enter email"
+                        value={data.email}
+                        onChange={(e) => {
+                          handleInput("email", e.target.value);
+                        }}
+                        required
+                      />
+                    </InputGroup>
+                  </Col>
+                  <Col md={12}>
+                    <Form.Label className="text-dark mt-3">Password</Form.Label>
+                    {/* <Form.Control
             className="rounded-pill"
             id="password"
             value={data.password}
@@ -86,32 +111,54 @@ function Login() {
             }}
             type="password"
             placeholder="Enter password"
-          />
+          /> */}
+                    <InputGroup className="mb-4">
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>
+                          <LockIcon />
+                        </InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <FormControl
+                        id="password"
+                        value={data.password}
+                        onChange={(e) => {
+                          handleInput("password", e.target.value);
+                        }}
+                        type="password"
+                        placeholder="enter password"
+                        required
+                      />
+                    </InputGroup>
+                  </Col>
+
+                  <Col md={12}>
+                    <Button
+                      type="submit"
+                      className="my-3 login_button"
+                      variant="outline-light"
+                    >
+                      Sign in
+                    </Button>
+                  </Col>
+                  <Col md={12}>
+                    <Button
+                      href="http://localhost:3001/users/googleLogin"
+                      variant="outline-light"
+                      type="submit"
+                      className="google_button mb-4 "
+                    >
+                      <FcGoogle style={{ fontSize: "25px" }} />
+                      Continue with Google
+                    </Button>
+                  </Col>
+                </Row>
+              </Container>
+            </Form>
           </Col>
-         
-          <Col md={12}>
-          <Button variant="success" type="submit" className="mr-3 rounded-pill">
-            Sign in
-          </Button>
-          </Col>
-          <Col md={12}>
-          
-          <Button href="http://localhost:3001/users/googleLogin" variant="light" type="submit" className=" ml-3 rounded-pill">
-            <FcGoogle style={{ fontSize: "25px" }}/>
-            Continue with Google
-          </Button>
-          </Col>
-          
-          </Row>
-          </Container>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
-  
-     
-  // </div>
-  )
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
-export default Login
+export default Login;

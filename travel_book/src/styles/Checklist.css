@@ -16,13 +16,14 @@
   border-bottom-color: rgba(225, 225, 225, 0.1);
   border-right-color: rgba(225, 225, 225, 0.1);
   margin-top: 10px;
+  text-align: initial;
 }
 
 .list_checklist h4 {
-  color: antiquewhite;
-
+  /* color: antiquewhite; */
+  color: black;
   padding: 10px;
-  display: inline-block;
+  /* display: inline-block; */
   border-bottom: 4px solid #ce9f11;
 }
 
@@ -70,17 +71,17 @@
   width: 100%;
   height: 1px;
   background: #fff;
-  transform: translateX(-70%) scale(0);
+  transform: translateX(-50%) scale(0);
   transform-origin: right;
   transition: transform 0.5s;
 }
 
 .list_checklist input[type="checkbox"]:checked ~ span:before {
-  transform: translateX(-70%) scale(1);
+  transform: translateX(0%) scale(1);
   transform-origin: left;
   transition: transform 0.5s;
 }
 
-.list_checklist input[type="checkbox"]:checked ~ span{
-    color: #154e6b;
+.list_checklist input[type="checkbox"]:checked ~ span {
+  color: #154e6b;
 }

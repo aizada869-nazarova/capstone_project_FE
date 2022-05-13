@@ -1,9 +1,13 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import NavbarOfTrip from './NavbarOfTrip'
 import {Container, Row, Col} from "react-bootstrap"
 import {useParams} from "react-router-dom"
-import Checklist from './Checklist'
+// import "../styles/Overview.css"
+import Overview from './Overview'
+
+
 const TripDetails=()=> {
+const [trip, setTrip]=useState([])
 
   let { travelId } = useParams()
   console.log(travelId)
@@ -23,6 +27,7 @@ const TripDetails=()=> {
       if (response.ok) {
         const newData = await response.json();
         console.log(newData);
+        setTrip(newData)
        
       } else {
         console.log("fetch failed on line 86");
@@ -38,14 +43,13 @@ const TripDetails=()=> {
   return (
     <>
     
-    <Container>
+    <Container fluid className=' overview_bg '>
+      
       <Row>
-        <Col><NavbarOfTrip/></Col>
+        <Col xs={12} className="d-flex justify-content-center"><Overview trip={trip}/></Col>
         
       </Row>
-      <Row>
-        <Col xs={12} className="d-flex justify-content-center"><Checklist/></Col>
-      </Row>
+      
     </Container>
     </>
      

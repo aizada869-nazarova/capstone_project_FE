@@ -1,8 +1,20 @@
 import React from "react";
-import { Form, Col, Row, Container, Button } from "react-bootstrap";
+import {
+  Form,
+  Col,
+  Row,
+  Container,
+  Button,
+  InputGroup,
+  FormControl,
+} from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
+import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
+import LockIcon from "@material-ui/icons/Lock";
+import PersonIcon from "@material-ui/icons/Person";
+import SupervisorAccountOutlinedIcon from "@material-ui/icons/SupervisorAccountOutlined";
 
 function Register() {
   const navigate = useNavigate();
@@ -46,37 +58,71 @@ function Register() {
     });
   };
   return (
-    <Container className="d-flex justify-content-center login align-self-center">
-      <Row className="d-flex justify-content-center main_form">
-        <Col md={12}>
-          <Form onSubmit={handleSubmit}>
-            <Container>
-              <h1 className="mb-3 text-light">
-                <strong>Register</strong>
-              </h1>
-              <Row>
-                <Col md={12}>
-                  <Form.Label className="text-dark">
+    <div className="body_back">
+      <Container className="d-flex justify-content-center login align-self-center align-center">
+        <Row className="d-flex justify-content-center main_form">
+          <Col md={12}>
+            <Form onSubmit={handleSubmit}>
+              <Container>
+                <h1 className="mb-5 mt-4 text-dark">
+                  <strong>Register</strong>
+                </h1>
+                <Row>
+                  <Col md={12}>
+                    {/* <Form.Label className="text-dark">
                     <strong>Username</strong>
-                  </Form.Label>
-
-                  <Form.Control
+                  </Form.Label> */}
+                    <InputGroup className="mb-3">
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>
+                          {" "}
+                          <PersonIcon />
+                        </InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <FormControl
+                        id="inlineFormInputGroup"
+                        placeholder="username"
+                        type="text"
+                        value={data.userName}
+                        onChange={(e) => {
+                          handleChange("userName", e.target.value);
+                        }}
+                        required
+                      />
+                    </InputGroup>
+                    {/* <Form.Control
                     className="rounded-pill"
-                    id="email"
+                    id="username"
                     type="text"
-                    placeholder="Enter username"
+                   
                     value={data.userName}
                     onChange={(e) => {
                       handleChange("userName", e.target.value);
                     }}
-                  />
-                </Col>
-                <Col md={12}>
-                  <Form.Label className="text-dark">
+                  /> */}
+                  </Col>
+                  <Col md={12}>
+                    {/* <Form.Label className="text-dark">
                     <strong>Surname</strong>
-                  </Form.Label>
-
-                  <Form.Control
+                  </Form.Label> */}
+                    <InputGroup className="mb-3">
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>
+                          <SupervisorAccountOutlinedIcon />
+                        </InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <FormControl
+                        id="surname"
+                        placeholder="user surname"
+                        type="text"
+                        value={data.surname}
+                        onChange={(e) => {
+                          handleChange("surname", e.target.value);
+                        }}
+                        required
+                      />
+                    </InputGroup>
+                    {/* <Form.Control
                     className="rounded-pill"
                     id="surname"
                     type="text"
@@ -85,10 +131,10 @@ function Register() {
                     onChange={(e) => {
                       handleChange("surname", e.target.value);
                     }}
-                  />
-                </Col>
-                <Col md={12}>
-                  <Form.Label className="text-dark">
+                  /> */}
+                  </Col>
+                  <Col md={12}>
+                    {/* <Form.Label className="text-dark">
                     <strong>Email address</strong>
                   </Form.Label>
 
@@ -100,14 +146,31 @@ function Register() {
                     onChange={(e) => {
                       handleChange("email", e.target.value);
                     }}
-                  />
-                </Col>
+                  /> */}
+                    <InputGroup className="mb-3">
+                      <InputGroup.Prepend>
+                        <InputGroup.Text>
+                          <AlternateEmailIcon />
+                        </InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <FormControl
+                        id="email"
+                        type="email"
+                        placeholder="enter email"
+                        value={data.email}
+                        onChange={(e) => {
+                          handleChange("email", e.target.value);
+                        }}
+                        required
+                      />
+                    </InputGroup>
+                  </Col>
 
-                <Col md={12}>
-                  <Form.Label className="text-dark">
+                  <Col md={12}>
+                    {/* <Form.Label className="text-dark">
                     <strong>Password</strong>
                   </Form.Label>
-                
+
                   <Form.Control
                     className="rounded-pill"
                     id="password"
@@ -117,25 +180,42 @@ function Register() {
                     onChange={(e) => {
                       handleChange("password", e.target.value);
                     }}
-                  />
-                </Col>
-             
-                <Col md={12}
-                >
-                  <Button
-                    variant="success"
-                    type="submit"
-                    className="rounded-pill"
-                  >
-                    Sign Up
-                  </Button>
-                </Col>
-              </Row>
-            </Container>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+                  /> */}
+                    <InputGroup className="mb-4">
+                      <InputGroup.Prepend className="icon_background">
+                        <InputGroup.Text className="icon_background">
+                          <LockIcon />
+                        </InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <FormControl
+                        id="password"
+                        type="password"
+                        placeholder="enter password"
+                        value={data.password}
+                        onChange={(e) => {
+                          handleChange("password", e.target.value);
+                        }}
+                        required
+                      />
+                    </InputGroup>
+                  </Col>
+
+                  <Col md={12}>
+                    <Button
+                      className="login_button "
+                      variant="outline-secondary"
+                      type="submit"
+                    >
+                      Sign Up
+                    </Button>
+                  </Col>
+                </Row>
+              </Container>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 

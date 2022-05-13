@@ -1,18 +1,46 @@
+.body_back{background-image: url("pack.jpeg"); 
+  background-size: cover;
 
+  height: 100vh;
+  width: 100vw;
+  display: flex}
 .main_form{
-    
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(234, 235, 237, 0.37);
-    backdrop-filter: blur(8.5px);
-    -webkit-backdrop-filter: blur(8.5px);
-    border-radius: 10px;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 0.4rem;
-   
+  background-color: rgba(225, 225, 225, 0.1);
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  backdrop-filter: blur(1rem);
+  box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+  border-top-color:  rgba(225, 225, 225, 0.5);
+  border-left-color:  rgba(225, 225, 225, 0.5);
+  border-bottom-color:  rgba(225, 225, 225, 0.1);
+  border-right-color:  rgba(225, 225, 225, 0.1);
+   text-align: center;
  }
 
 .login{
-  height: 400px;
+  height: 75%;
   width: 400px !important;
 }
+
+.sign_in{
+
+  background: #ce9f11;
+  /* width: 100px; */
+}
+
+.login_button{
+  width: 100%;
+  background-color: #31185f !important;
+}
+
+.google_button{
+  width: 100%;
+ 
+}
+.icon_background{
+  background-color: #7c749c;
+}
+
+/* .body_register{
+  background-color: aquamarine;
+} */

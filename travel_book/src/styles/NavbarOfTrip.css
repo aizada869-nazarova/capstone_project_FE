@@ -9,12 +9,22 @@
     border-bottom-color:  rgba(225, 225, 225, 0.1);
     border-right-color:  rgba(225, 225, 225, 0.1);
     margin-top: 5px;
+    
 }
 
 .nav_text{
     justify-content: space-evenly;
+    
 }
 
 .icon{
     font-size: x-large;
+   color: beige;
 }
+
+.text_color{
+    color:beige
+}
+
+/* .nav-link {color: #f00;}
+.nav-link:hover {color: #0f0;} */

@@ -1,0 +1,22 @@
+.paking_back {
+  background-image: url("./packing.jpeg");
+  background-blend-mode: overlay;
+  background-color: #1f1d22;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.input_margin {
+  margin-top: 5%;
+}
+
+.title_details {
+  font-size: 3rem;
+  color: aliceblue;
+  margin-top: 2rem;
+  font-family: "Libre Baskerville", serif;
+}

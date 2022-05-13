@@ -1,0 +1,91 @@
+
+* body{
+    background-color: rgb(239, 243, 252);
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main_home{
+    display:flex;
+    align-items: center;
+    row-gap: 2rem;
+    flex-wrap: wrap; 
+    flex-basis: 1;
+}
+
+.main_text{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    padding: 0.5%;
+    margin:2%; 
+    text-align: center;
+   align-items: center;
+   font-size: small;
+    }
+
+.main_title{ 
+    font-size: 2.2rem;
+    color: rgb(38, 31, 61);
+    font-weight: bold;
+    font-family: 'Libre Baskerville', serif;
+    margin-bottom: 10px;
+}
+
+h6{
+    line-height: 1.7rem;
+    color: rgb(131, 127, 127);
+    padding: 0 12%;
+    margin-top: 0;
+}
+.subtittle{
+    text-align: justify;
+}
+
+.home_button{
+  
+    background-color: #4c3466;
+    color: white;
+    width: 120%;
+    
+   
+   
+    
+}
+
+.home_button:hover {
+    background-color: #7c749c;
+
+}
+.hero-image{
+    margin: 0 auto;
+}
+img{
+    width: 400px;
+    height: 300px;
+}
+
+@media (min-width: 800px){
+
+    .container{
+        flex-wrap: nowrap;
+    }
+    .hero-image{
+    width: 60%;
+    height: auto;
+    
+}
+
+img{ 
+    
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    border-radius: 48% 0 30% 67%; 
+    box-shadow:  0 5px 9px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+
+
+}
+h1{
+    font-size: 3.2rem;
+}}
