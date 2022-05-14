@@ -1,22 +1,20 @@
-import React, {useEffect, useState} from 'react'
-import NavbarOfTrip from './NavbarOfTrip'
-import {Container, Row, Col} from "react-bootstrap"
-import {useParams} from "react-router-dom"
+import React, { useEffect, useState } from "react";
+import NavbarOfTrip from "./NavbarOfTrip";
+import { Container, Row, Col } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 // import "../styles/Overview.css"
-import Overview from './Overview'
+import Overview from "./Overview";
 
+const TripDetails = () => {
+  const [trip, setTrip] = useState([]);
 
-const TripDetails=()=> {
-const [trip, setTrip]=useState([])
-
-  let { travelId } = useParams()
-  console.log(travelId)
+  let { travelId } = useParams();
+  console.log(travelId);
   const url = `http://localhost:3001/travels/${travelId}`;
-  const token = localStorage.getItem("accessToken")
+  const token = localStorage.getItem("accessToken");
 
   const fetchTrips = async () => {
     try {
-      
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -27,8 +25,7 @@ const [trip, setTrip]=useState([])
       if (response.ok) {
         const newData = await response.json();
         console.log(newData);
-        setTrip(newData)
-       
+        setTrip(newData);
       } else {
         console.log("fetch failed on line 86");
       }
@@ -42,19 +39,15 @@ const [trip, setTrip]=useState([])
   }, []);
   return (
     <>
-    
-    <Container fluid className=' overview_bg '>
-      
-      <Row>
-        <Col xs={12} className="d-flex justify-content-center"><Overview trip={trip}/></Col>
-        
-      </Row>
-      
-    </Container>
+      <Container fluid className=" overview_bg ">
+        <Row>
+          <Col xs={12} className="d-flex justify-content-center">
+            <Overview trip={trip} />
+          </Col>
+        </Row>
+      </Container>
     </>
-     
-      
-  )
-}
+  );
+};
 
-export default TripDetails
+export default TripDetails;

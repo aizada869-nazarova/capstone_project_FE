@@ -11,7 +11,7 @@ import {
 import { FaTrashAlt } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Delete";
+
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 import "../styles/ListGroup.css";
 const SingleList = ({
@@ -142,17 +142,6 @@ const SingleList = ({
               </Col>
             </Row>
           </ListGroup.Item>
-          {/* <Button
-            variant="outline-light"
-            className="rounded-pill button"
-            onClick={() => {
-              setSelectedList(id);
-              showEditTrip();
-              // navigate(`/${id}`)
-            }}
-          >
-            Edit{" "}
-          </Button> */}
         </ListGroup>
       </div>
 

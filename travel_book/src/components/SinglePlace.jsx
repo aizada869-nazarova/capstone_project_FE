@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { ListGroup, Form, Button, Col, Modal } from "react-bootstrap";
+import { ListGroup, Form, Button, Col, Modal, Row } from "react-bootstrap";
 import { FaTrashAlt } from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
+import EditIcon from "@material-ui/icons/Edit";
 
+import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
   const token = localStorage.getItem("accessToken");
 
   console.log(itineraryid);
-  
 
   const [trips, setTrips] = useState(null);
   const [editPlace, setEditPlace] = useState(false);
@@ -97,9 +99,9 @@ const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
 
   return (
     <>
-      <ListGroup style={{ color: "dark" }}>
+      {/* <ListGroup style={{ color: "dark" }}>
         <ListGroup.Item className="d-flex">
-          {<Form.Check aria-label="option 1" />}
+          <Form.Check aria-label="option 1" />
           {singlePlace}
         </ListGroup.Item>
         <Button
@@ -113,23 +115,54 @@ const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
         >
           Edit{" "}
         </Button>
-      </ListGroup>
+      </ListGroup> */}
+
+      <div className="mt-6 w-100">
+        <ListGroup style={{ color: "dark" }} className="mb-2">
+          <ListGroup.Item id="list_group">
+            <Row>
+              <Col className="d-flex">
+                {/* <Form.Check aria-label="option 1" />{" "}
+                <strong>{singlePlace}</strong> */}
+                <label>
+                  <input type="checkbox" />
+                  <i></i>
+                  <span className="checklist_span">{singlePlace}</span>
+                </label>
+              </Col>
+              <Col xs={"auto"}>
+                <IconButton
+                  size="small"
+                  aria-label="add an alarm"
+                  onClick={() => {
+                    setSelectedPlace(id);
+                    showEditPlace();
+                    // navigate(`/${id}`)
+                  }}
+                >
+                  <EditIcon fontSize="small" className="color_icon" />
+                </IconButton>
+              </Col>
+            </Row>
+          </ListGroup.Item>
+        </ListGroup>
+      </div>
 
       <Modal show={editPlace} onHide={closeEditPlace}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit packing list</Modal.Title>
+          <Modal.Title>Edit Place and Activities</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Row className="justify-content-between">
               <Col xs="auto">
                 <Form.Label htmlFor="inlineFormInput" srOnly>
-                  name of item
+                  enter place and activities
                 </Form.Label>
                 <Form.Control
                   className="mb-2"
                   id="inlineFormInput"
-                  placeholder="place to visit"
+                  placeholder="enter place to visit"
                   type="text"
                   value={newEnteredPlace}
                   onChange={(e) => setNewEnteredPlace(e.target.value)}

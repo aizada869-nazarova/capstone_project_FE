@@ -11,6 +11,12 @@ function Checklist() {
           <NavbarOfTrip />
         </Col>
       </Row>
+      <Row className="d-flex justify-content-center">
+        <Col>
+          {" "}
+          <div className="title_details">Pre-travel Checklist</div>
+        </Col>
+      </Row>
       <Row>
         <Col xs={12} className="d-flex justify-content-center">
           <div className="list_checklist text size ">
@@ -19,47 +25,47 @@ function Checklist() {
               <label>
                 <input type="checkbox" />
                 <i></i>
-                <span>Transport</span>
+                <span className="checklist_span">Transport</span>
               </label>
               <label>
                 <input type="checkbox" />
                 <i></i>
-                <span className="text">Accommodation</span>
+                <span className="checklist_span">Accommodation</span>
               </label>
               <label>
                 <input type="checkbox" />
                 <i></i>
-                <span>Insurance</span>
+                <span className="checklist_span">Insurance</span>
               </label>
               <label>
                 <input type="checkbox" />
                 <i></i>
-                <span>Car rental</span>
+                <span className="checklist_span">Car rental</span>
               </label>
               <label>
                 <input type="checkbox" />
                 <i></i>
-                <span>Driving license</span>
+                <span className="checklist_span">Driving license</span>
               </label>
               <label>
                 <input type="checkbox" />
                 <i></i>
-                <span>Visa</span>
+                <span className="checklist_span">Visa</span>
               </label>
               <label>
                 <input type="checkbox" />
                 <i></i>
-                <span>Vaccination</span>
+                <span className="checklist_span">Vaccination</span>
               </label>
               <label>
                 <input type="checkbox" />
                 <i></i>
-                <span>Currency exchange</span>
+                <span className="checklist_span">Currency exchange</span>
               </label>
               <label>
                 <input type="checkbox" />
                 <i></i>
-                <span>Buy a SIM card</span>
+                <span className="checklist_span">Buy a SIM card</span>
               </label>
             </div>
           </div>

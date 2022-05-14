@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+
 import {
   Container,
   Row,
@@ -9,32 +9,28 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
-import SingleItinerary from "./SingleItinerary";
-import AddVisitPlace from "./AddVisitPlace";
-import NavbarOfTrip from "./NavbarOfTrip";
+import SingleTodoList from "./SingleTodoList";
 
-function AddItinerary() {
-  let { travelId } = useParams();
+const AddTodoLists = (props) => {
+  const itinId = props.itineraryId;
+  console.log(itinId);
 
   const url = `http://localhost:3001/itinerary`;
-
-  const [itineraries, setItineraries] = useState([]);
+  const [todoLists, setTodoLists] = useState([]);
 
   const [tripChanged, setTripChanged] = useState(0);
 
-  const [singleItinerary, setSingleItinerary] = useState("");
-  const [travel, setTravel] = useState(travelId);
+  const [singleTodoList, setSingleTodoList] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const plan = {
-      itinerary: singleItinerary,
-      travelId: travel,
+      todo: singleTodoList,
     };
     try {
       const token = localStorage.getItem("accessToken");
-      fetch(url, {
+      fetch(`${url}/${itinId}/todo`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +40,7 @@ function AddItinerary() {
       }).then((response) => {
         console.log(response);
         if (response.ok) {
-          fetchTrips();
+          fetchTodoLists();
           setTripChanged((count) => count + 1);
         } else {
           alert("fetch failed");
@@ -56,10 +52,10 @@ function AddItinerary() {
     }
   };
 
-  const fetchTrips = async () => {
+  const fetchTodoLists = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const response = await fetch(`${url}/${travelId}`, {
+      const response = await fetch(`${url}/${itinId}/todo`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +65,7 @@ function AddItinerary() {
       if (response.ok) {
         const newData = await response.json();
         console.log(newData);
-        setItineraries(newData);
+        setTodoLists(newData);
       } else {
         console.log("fetch failed on line 86");
       }
@@ -79,50 +75,31 @@ function AddItinerary() {
   };
 
   useEffect(() => {
-    fetchTrips();
+    fetchTodoLists();
   }, [tripChanged]);
 
   return (
     <>
-      {/* className="profile-sub-section mt-4 single-list-item" */}
-      <Container fluid className="paking_back">
-        <Row>
-          <Col>
-            <NavbarOfTrip />
-          </Col>
-        </Row>
-        <Row className="d-flex justify-content-center">
-          <Col>
-            {" "}
-            <div className="title_details">Daily Itinerary</div>
-          </Col>
-        </Row>
-
+      <Container>
         <Form onSubmit={handleSubmit}>
           <Row>
-            <Col xs={12} md={6}>
+            <Col xs={12} md={8}>
               <InputGroup className="mb-3">
                 <InputGroup.Prepend>
                   <InputGroup.Text id="basic-addon1">T</InputGroup.Text>
                 </InputGroup.Prepend>
                 <FormControl
-                  placeholder="Name of item"
-                  aria-label="Name of item"
-                  aria-describedby="Name of item"
-                  name="nameOfItem"
-                  value={singleItinerary}
-                  onChange={(e) => setSingleItinerary(e.target.value)}
+                  placeholder="enter todo "
+                  aria-label="todo"
+                  aria-describedby="todo"
+                  name="singleTodoList"
+                  value={singleTodoList}
+                  onChange={(e) => setSingleTodoList(e.target.value)}
                   required
                 />
               </InputGroup>
             </Col>
-            {/* <Col xs={6} md={4}>
-              <InputGroup className="mb-3">
-                <InputGroup.Prepend>
-                  <InputGroup.Text>C</InputGroup.Text>
-                </InputGroup.Prepend>
-              </InputGroup>
-            </Col> */}
+
             <Col xs="auto">
               <Button
                 type="submit"
@@ -137,21 +114,20 @@ function AddItinerary() {
         {/* </Container>
 
  
-
-          <Container> */}
-        {/* <Row> */}
-        {itineraries &&
-          itineraries.map(({ itinerary, _id: id }, i) => (
+ <Container>
+            <Row> */}
+        {todoLists &&
+          todoLists.map(({ todo, _id: id }, i) => (
             // <Col
             //   xs={12}
-            //   md={3}
-            //   lg={4}
+
             //   key={id}
             //   className="d-flex justify-content-center"
             // >
-            <SingleItinerary
+            <SingleTodoList
+              itineraryid={itinId}
               index={i}
-              singleItinerary={itinerary}
+              singleTodoList={todo}
               id={id}
               tripChanged={tripChanged}
               setTripChanged={() => setTripChanged((count) => count + 1)}
@@ -162,6 +138,6 @@ function AddItinerary() {
       </Container>
     </>
   );
-}
+};
 
-export default AddItinerary;
+export default AddTodoLists;

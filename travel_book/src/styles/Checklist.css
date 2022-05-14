@@ -57,13 +57,18 @@
   transform: rotate(-45deg);
 }
 
-.list_checklist span {
+/* .list_checklist span {
+  position: relative;
+  left: 40px;
+  transition: 0, 5s;
+} */
+.checklist_span {
   position: relative;
   left: 40px;
   transition: 0, 5s;
 }
 
-.list_checklist span:before {
+.checklist_span:before {
   content: "";
   position: absolute;
   top: 50%;

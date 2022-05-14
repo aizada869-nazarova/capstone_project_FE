@@ -1,43 +1,38 @@
-.overview_bg{
-   
-    background-image: url("pack.jpeg");
-  
+.overview_bg {
+  background-image: url("pack.jpeg");
   color: rgb(235, 227, 227);
-  /* background-blend-mode: overlay;
-  background-color: rgb(57, 58, 59); */
-  /* display: flex; 
-  background-blend-mode: overlay; */
-  /* /* height: 100%;
-width: 100%; */
-/* background-position: center; */
   background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
- 
+  background-blend-mode: overlay;
+  background-color: #1f1d22;
 }
 
-#overview_card{
-    position: relative;
-    background-color: rgba(225, 225, 225, 0.1);
-    border-radius: 1rem;
-    border: 1px solid transparent;
-    backdrop-filter: blur(1rem);
-    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
-    border-top-color: rgba(225, 225, 225, 0.5);
-    border-left-color: rgba(225, 225, 225, 0.5);
-    border-bottom-color: rgba(225, 225, 225, 0.1);
-    border-right-color: rgba(225, 225, 225, 0.1);
-    margin-top: 10px;
-   
+#overview_card {
+  position: relative;
+  background-color: rgba(225, 225, 225, 0.1);
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  backdrop-filter: blur(1rem);
+  box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+  border-top-color: rgba(225, 225, 225, 0.5);
+  border-left-color: rgba(225, 225, 225, 0.5);
+  border-bottom-color: rgba(225, 225, 225, 0.1);
+  border-right-color: rgba(225, 225, 225, 0.1);
+  margin-top: 10px;
 }
 
-.overview_table{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.white_text {
+  color: aliceblue;
 }
 
-
-
-.white_text{
-    color:aliceblue
+.orange_text {
+  color: #af8569;
+}
+.table-bordered {
+  border: none !important;
+  margin-bottom: 0;
 }

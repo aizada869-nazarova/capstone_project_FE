@@ -1,36 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup, Form, Button, Col, Modal, Row } from "react-bootstrap";
 import { FaTrashAlt } from "react-icons/fa";
-import { useParams, useNavigate } from "react-router-dom";
-import "../styles/ListGroup.css";
-import AddVisitPlace from "./AddVisitPlace";
+
 import IconButton from "@material-ui/core/IconButton";
+import EditIcon from "@material-ui/icons/Edit";
 
-import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
-import AddTodoLists from "./AddTodoLists";
-const SingleItinerary = ({
+const SingleTodoList = ({
   id,
-  singleItinerary,
-
+  singleTodoList,
+  itineraryid,
   setTripChanged,
-  index,
 }) => {
   const token = localStorage.getItem("accessToken");
 
-  console.log(id);
+  console.log(itineraryid);
 
   const [trips, setTrips] = useState(null);
-  const [editItinerary, setEditItinerary] = useState(false);
-  const [selectedItinerary, setSelectedItinerary] = useState(null);
+  const [editTodo, setEditTodo] = useState(false);
+  const [selectedTodo, setSelectedTodo] = useState(null);
 
-  const [newEnteredItinerary, setNewEnteredItinerary] = useState("");
+  const [newEnteredTodo, setNewEnteredTodo] = useState("");
 
-  const url = `http://localhost:3001/itinerary`;
-  const closeEditItinerary = () => setEditItinerary(false);
-  const showEditItinerary = async () => {
-    setEditItinerary(true);
+  const url = `http://localhost:3001/itinerary/${itineraryid}/todo`;
+  const closeEditPlace = () => setEditTodo(false);
+  const showEditPlace = async () => {
+    setEditTodo(true);
     try {
-      const response = await fetch(`${url}/${selectedItinerary}`, {
+      const response = await fetch(`${url}/${selectedTodo}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +38,7 @@ const SingleItinerary = ({
         const data = await response.json();
         console.log(data);
 
-        setNewEnteredItinerary(data.singleItinerary);
+        setNewEnteredTodo(data.singleTodoList);
       } else {
         console.log("Fetch Failed line 48");
       }
@@ -52,17 +48,17 @@ const SingleItinerary = ({
   };
 
   useEffect(() => {
-    setNewEnteredItinerary(singleItinerary);
+    setNewEnteredTodo(singleTodoList);
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const plan = {
-      itinerary: newEnteredItinerary,
+      todo: newEnteredTodo,
     };
     try {
-      const response = await fetch(`${url}/${selectedItinerary}`, {
+      const response = await fetch(`${url}/${selectedTodo}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +72,7 @@ const SingleItinerary = ({
         const data = await response.json();
         setTrips(data);
         setTripChanged();
-        closeEditItinerary();
+        closeEditPlace();
       } else {
         console.error("fetch failed in line 104 SingleTrip component");
       }
@@ -85,9 +81,9 @@ const SingleItinerary = ({
     }
   };
 
-  const handleDeleteItinerary = async () => {
+  const handleDeletePlace = async () => {
     try {
-      const response = await fetch(`${url}/${selectedItinerary}`, {
+      const response = await fetch(`${url}/${selectedTodo}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +92,7 @@ const SingleItinerary = ({
       });
       if (response.ok) {
         setTripChanged();
-        closeEditItinerary();
+        closeEditPlace();
       } else {
         console.log("fetch failed from delete line 104");
       }
@@ -107,53 +103,17 @@ const SingleItinerary = ({
 
   return (
     <>
-      <Row>
-        <Col xs={12} className="d-flex justify-content-center">
-          <div className="list_checklist text size ">
-            <Row>
-              <Col className="d-flex">
-                <h2>{singleItinerary}</h2>{" "}
-              </Col>
-              <Col xs={"auto"}>
-                {" "}
-                <IconButton
-                  size="small"
-                  aria-label="add an alarm"
-                  onClick={() => {
-                    setSelectedItinerary(id);
-                    showEditItinerary();
-                    // navigate(`/${id}`)
-                  }}
-                >
-                  <DragIndicatorIcon fontSize="small" className="color_icon" />
-                </IconButton>
-              </Col>
-            </Row>
-            <div>
-              <h2>
-                {" "}
-                <span className="checklist_span">Visits and Activities</span>
-              </h2>
-              <span>
-                {" "}
-                <AddVisitPlace itineraryId={id} />
-              </span>
-              <span>
-                <AddTodoLists itineraryId={id} />
-              </span>
-            </div>
-          </div>
-        </Col>
-      </Row>
-
-      {/* <ListGroup>
-        <ListGroup.Item>{singleItinerary}</ListGroup.Item>
+      {/* <ListGroup style={{ color: "dark" }}>
+        <ListGroup.Item className="d-flex">
+          <Form.Check aria-label="option 1" />
+          { singleTodoList}
+        </ListGroup.Item>
         <Button
-          variant="outline-dark"
+          variant="outline-light"
           className="rounded-pill button"
           onClick={() => {
-            setSelectedItinerary(id);
-            showEditItinerary();
+            setSelectedTodo(id);
+            showEditPlace();
             // navigate(`/${id}`)
           }}
         >
@@ -161,24 +121,55 @@ const SingleItinerary = ({
         </Button>
       </ListGroup> */}
 
-      <Modal show={editItinerary} onHide={closeEditItinerary}>
+      <div className="mt-6 w-100">
+        <ListGroup style={{ color: "dark" }} className="mb-2">
+          <ListGroup.Item id="list_group">
+            <Row>
+              <Col className="d-flex">
+                {/* <Form.Check aria-label="option 1" />{" "}
+                <strong>{ singleTodoList}</strong> */}
+                <label>
+                  <input type="checkbox" />
+                  <i></i>
+                  <span className="checklist_span">{singleTodoList}</span>
+                </label>
+              </Col>
+              <Col xs={"auto"}>
+                <IconButton
+                  size="small"
+                  aria-label="add an alarm"
+                  onClick={() => {
+                    setSelectedTodo(id);
+                    showEditPlace();
+                    // navigate(`/${id}`)
+                  }}
+                >
+                  <EditIcon fontSize="small" className="color_icon" />
+                </IconButton>
+              </Col>
+            </Row>
+          </ListGroup.Item>
+        </ListGroup>
+      </div>
+
+      <Modal show={editTodo} onHide={closeEditPlace}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit packing list</Modal.Title>
+          <Modal.Title>Edit todo list</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Row className="justify-content-between">
               <Col xs="auto">
                 <Form.Label htmlFor="inlineFormInput" srOnly>
-                  name of item
+                  enter place and activities
                 </Form.Label>
                 <Form.Control
                   className="mb-2"
                   id="inlineFormInput"
-                  placeholder="name of item"
+                  placeholder="enter to do list..."
                   type="text"
-                  value={newEnteredItinerary}
-                  onChange={(e) => setNewEnteredItinerary(e.target.value)}
+                  value={newEnteredTodo}
+                  onChange={(e) => setNewEnteredTodo(e.target.value)}
                   required
                 />
               </Col>
@@ -195,7 +186,7 @@ const SingleItinerary = ({
                 variant="danger"
                 type="button"
                 className="mr-4"
-                onClick={handleDeleteItinerary}
+                onClick={handleDeletePlace}
               >
                 <FaTrashAlt />
               </Button>
@@ -203,10 +194,8 @@ const SingleItinerary = ({
           </Form>
         </Modal.Body>
       </Modal>
-
-      {/* <AddVisitPlace itineraryId={id} /> */}
     </>
   );
 };
 
-export default SingleItinerary;
+export default SingleTodoList;

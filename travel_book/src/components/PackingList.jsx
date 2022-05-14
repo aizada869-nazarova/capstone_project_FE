@@ -58,13 +58,6 @@ function PackingList() {
       });
       console.log("enteredValue", pakinglist);
     } catch (error) {
-      // if (response.ok) {
-      //   const data = response.json();
-      //   fetchExperiences();
-      //   setExperienceChanged((count) => count + 1);
-      // } else {
-      //   console.error("fetch failed");
-      // }
       console.error(error, "from catch");
     }
   };
@@ -105,7 +98,7 @@ function PackingList() {
         <Row className="d-flex justify-content-center">
           <Col>
             {" "}
-            <div className="title_details">Packing lists</div>
+            <div className="title_details">Packing List</div>
           </Col>
         </Row>
 

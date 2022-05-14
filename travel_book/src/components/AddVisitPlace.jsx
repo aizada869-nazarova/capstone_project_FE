@@ -11,10 +11,10 @@ import {
 } from "react-bootstrap";
 import SinglePlace from "./SinglePlace";
 
-const AddVisitPlace=(props)=> {
-//   let { itineraryId } = useParams();
-  const itinId= props.itineraryId
-console.log(itinId)
+const AddVisitPlace = (props) => {
+  //   let { itineraryId } = useParams();
+  const itinId = props.itineraryId;
+  console.log(itinId);
 
   const url = `http://localhost:3001/itinerary`;
   const [toVisitPlaces, setToVisitPlaces] = useState([]);
@@ -80,66 +80,66 @@ console.log(itinId)
   }, [tripChanged]);
 
   return (
-  <>
-   <Container>
-   <Form onSubmit={handleSubmit}>
-   <Row>
-              <Col xs={12} md={8}>
-                <InputGroup className="mb-3">
-                  <InputGroup.Prepend>
-                    <InputGroup.Text id="basic-addon1">T</InputGroup.Text>
-                  </InputGroup.Prepend>
-                  <FormControl
-                    placeholder="Name of item"
-                    aria-label="Name of item"
-                    aria-describedby="Name of item"
-                    name="nameOfItem"
-                    value={singlePlace}
-                    onChange={(e) => setSinglePlace(e.target.value)}
+    <>
+      <Container>
+        <Form onSubmit={handleSubmit}>
+          <Row>
+            <Col xs={12} md={8}>
+              <InputGroup className="mb-3">
+                <InputGroup.Prepend>
+                  <InputGroup.Text id="basic-addon1">T</InputGroup.Text>
+                </InputGroup.Prepend>
+                <FormControl
+                  placeholder="enter place and activity"
+                  aria-label="Name of item"
+                  aria-describedby="Name of item"
+                  name="singlePlace"
+                  value={singlePlace}
+                  onChange={(e) => setSinglePlace(e.target.value)}
                   required
-                  />
-                </InputGroup>
-              </Col>
-              
-              <Col xs="auto">
-                <Button type="submit" className="mb-2" style={{background: "#ce9f11"}}>
-                  Submit
-                </Button>
-              </Col>
-            </Row>
-   </Form>
- {/* </Container>
+                />
+              </InputGroup>
+            </Col>
+
+            <Col xs="auto">
+              <Button
+                type="submit"
+                className="mb-2"
+                style={{ background: "#ce9f11" }}
+              >
+                Submit
+              </Button>
+            </Col>
+          </Row>
+        </Form>
+        {/* </Container>
 
  
  <Container>
             <Row> */}
-              {toVisitPlaces&&
-                toVisitPlaces.map(
-                  ({ place, _id: id,}, i) => (
-                    // <Col
-                    //   xs={12}
-                    //   md={3}
-                    //   lg={4}
-                    //   key={id}
-                    //   className="d-flex justify-content-center"
-                    // >
-                      <SinglePlace
-                      itineraryid={itinId}
-                        index={i}
-                        singlePlace={place}
-                        id={id}
-                       
-                        tripChanged={tripChanged}
-                        setTripChanged={() => setTripChanged((count) => count + 1)}
-                      />
-                    // </Col>
-                  )
-                )}
-            {/* </Row> */}
-            
-          </Container>
-  
-  </>);
-}
+        {toVisitPlaces &&
+          toVisitPlaces.map(({ place, _id: id }, i) => (
+            // <Col
+            //   xs={12}
+            //   md={3}
+            //   lg={4}
+            //   key={id}
+            //   className="d-flex justify-content-center"
+            // >
+            <SinglePlace
+              itineraryid={itinId}
+              index={i}
+              singlePlace={place}
+              id={id}
+              tripChanged={tripChanged}
+              setTripChanged={() => setTripChanged((count) => count + 1)}
+            />
+            // </Col>
+          ))}
+        {/* </Row> */}
+      </Container>
+    </>
+  );
+};
 
 export default AddVisitPlace;
