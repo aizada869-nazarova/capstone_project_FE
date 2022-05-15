@@ -140,25 +140,30 @@ function AddItinerary() {
 
           <Container> */}
         {/* <Row> */}
-        {itineraries &&
-          itineraries.map(({ itinerary, _id: id }, i) => (
-            // <Col
-            //   xs={12}
-            //   md={3}
-            //   lg={4}
-            //   key={id}
-            //   className="d-flex justify-content-center"
-            // >
-            <SingleItinerary
-              index={i}
-              singleItinerary={itinerary}
-              id={id}
-              tripChanged={tripChanged}
-              setTripChanged={() => setTripChanged((count) => count + 1)}
-            />
-            // </Col>
-          ))}
-        {/* </Row> */}
+        <Container>
+          <Row>
+            {itineraries &&
+              itineraries.map(({ itinerary, _id: id }, i) => (
+                <Col
+                  xs={12}
+                  md={12}
+                  lg={6}
+                  key={id}
+                  className="d-flex justify-content-center"
+                >
+                  <SingleItinerary
+                    index={i}
+                    singleItinerary={itinerary}
+                    id={id}
+                    tripChanged={tripChanged}
+                    setTripChanged={() => setTripChanged((count) => count + 1)}
+                  />
+                  //{" "}
+                </Col>
+              ))}
+            {/* </Row> */}
+          </Row>
+        </Container>
       </Container>
     </>
   );

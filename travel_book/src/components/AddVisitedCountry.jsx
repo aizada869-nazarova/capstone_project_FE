@@ -17,8 +17,9 @@ import {
 } from "react-bootstrap";
 
 import EditVisitedCountry from "./EditVisitedCountry";
+import NavbarHome from "./NavbarHome";
 
-const AddVisitedCountry = () => {
+const AddVisitedCountry = ({ newUserId }) => {
   const url = "http://localhost:3001/visitedCountry";
 
   const [trips, setTrips] = useState([]);
@@ -43,7 +44,7 @@ const AddVisitedCountry = () => {
       date: date,
       duration: duration || null,
 
-      userId: "6259d0ef3c13cbc5bbdb7caa",
+      userId: newUserId,
     };
     try {
       const token = localStorage.getItem("accessToken");
@@ -104,135 +105,140 @@ const AddVisitedCountry = () => {
 
   return (
     <Container fluid className="home">
-      <div className="new-trip-top_margin pt-3">
-        <Row className="justify-content-center mb-3 ">
-          <Col xs={12} md={8} lg={6}>
-            {" "}
-            <h1 className="pl-2">Visited Countries: {trips.length} </h1>
-          </Col>
-          <Col xs={8} md={4} lg={3} className="d-flex align-items-center">
-            <Button
-              variant="warning"
-              className="add_trips rounded-pill"
-              onClick={showAddTrip}
-            >
-              <strong>Add</strong>
-            </Button>
-          </Col>
-        </Row>
+      <NavbarHome />
+      <Container>
+        <div className="new-trip-top_margin pt-3">
+          <Row className="justify-content-center mb-3 ">
+            <Col xs={12} md={8} lg={6}>
+              {" "}
+              <h1 className="pl-2">Visited Countries: {trips.length} </h1>
+            </Col>
+            <Col xs={8} md={4} lg={3} className="d-flex align-items-center">
+              <Button
+                variant="warning"
+                className="add_trips rounded-pill"
+                onClick={showAddTrip}
+              >
+                <strong>Add</strong>
+              </Button>
+            </Col>
+          </Row>
 
-        {/* <Container> */}
-        <Row
-          className="d-flex justify-content-center"
-          style={{ rowGap: "10px" }}
-        >
-          {trips &&
-            trips.map(
-              ({ cityName, _id: id, countryName, date, duration }, i) => (
-                <Col
-                  xs={8}
-                  md={4}
-                  lg={3}
-                  key={id}
-                  className="d-flex justify-content-center"
-                >
-                  <EditVisitedCountry
-                    index={i}
-                    cityName={cityName}
-                    id={id}
-                    countryName={countryName}
-                    date={date}
-                    duration={duration}
-                    setTripChanged={() => setTripChanged((count) => count + 1)}
-                  />
-                </Col>
-              )
-            )}
-        </Row>
-        {/* </Container> */}
-
-        <Modal show={addTrip} onHide={closeAddTrip}>
-          <Modal.Header closeButton>
-            <Modal.Title className="font-weight-normal">
-              Add a visited country{" "}
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form onSubmit={handleSubmit}>
-              <Form.Row className="justify-content-between">
-                <Col xs="auto">
-                  <Form.Label htmlFor="inlineFormInput" srOnly>
-                    City
-                  </Form.Label>
-                  <Form.Control
-                    className="mb-2"
-                    id="inlineFormInput"
-                    placeholder="City"
-                    type="text"
-                    value={cityName}
-                    onChange={(e) => setCityName(e.target.value)}
-                    required
-                  />
-                </Col>
-                <Col xs="auto">
-                  <Form.Label htmlFor="inlineFormInput" srOnly>
-                    Country
-                  </Form.Label>
-                  <Form.Control
-                    className="mb-2"
-                    id="inlineFormInput"
-                    placeholder="Country"
-                    type="text"
-                    value={countryName}
-                    onChange={(e) => setCountryName(e.target.value)}
-                    required
-                  />
-                </Col>
-              </Form.Row>
-
-              <Form.Row className="justify-content-between">
-                <Col xs="auto">
-                  <Form.Label htmlFor="inlineFormInput" srOnly>
-                    Date
-                  </Form.Label>
-                  <Form.Control
-                    className="mb-2"
-                    id="inlineFormInput"
-                    placeholder="Date"
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <Form.Label htmlFor="inlineFormInput" srOnly>
-                    number
-                  </Form.Label>
-                  <Form.Control
-                    className="mb-2"
-                    id="inlineFormInput"
-                    placeholder="Duration"
-                    type="number"
-                    value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
-                  />
-                </Col>
-
-                <Col xs="auto">
-                  <Button
-                    type="submit"
-                    className="mb-2"
-                    variant="warning"
-                    onClick={closeAddTrip}
+          {/* <Container> */}
+          <Row
+            className="d-flex justify-content-center"
+            style={{ rowGap: "10px" }}
+          >
+            {trips &&
+              trips.map(
+                ({ cityName, _id: id, countryName, date, duration }, i) => (
+                  <Col
+                    xs={8}
+                    md={4}
+                    lg={3}
+                    key={id}
+                    className="d-flex justify-content-center"
                   >
-                    Submit
-                  </Button>
-                </Col>
-              </Form.Row>
-            </Form>
-          </Modal.Body>
-        </Modal>
-      </div>
+                    <EditVisitedCountry
+                      index={i}
+                      cityName={cityName}
+                      id={id}
+                      countryName={countryName}
+                      date={date}
+                      duration={duration}
+                      setTripChanged={() =>
+                        setTripChanged((count) => count + 1)
+                      }
+                    />
+                  </Col>
+                )
+              )}
+          </Row>
+          {/* </Container> */}
+
+          <Modal show={addTrip} onHide={closeAddTrip}>
+            <Modal.Header closeButton>
+              <Modal.Title className="font-weight-normal">
+                Add a visited country{" "}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form onSubmit={handleSubmit}>
+                <Form.Row className="justify-content-between">
+                  <Col xs="auto">
+                    <Form.Label htmlFor="inlineFormInput" srOnly>
+                      City
+                    </Form.Label>
+                    <Form.Control
+                      className="mb-2"
+                      id="inlineFormInput"
+                      placeholder="City"
+                      type="text"
+                      value={cityName}
+                      onChange={(e) => setCityName(e.target.value)}
+                      required
+                    />
+                  </Col>
+                  <Col xs="auto">
+                    <Form.Label htmlFor="inlineFormInput" srOnly>
+                      Country
+                    </Form.Label>
+                    <Form.Control
+                      className="mb-2"
+                      id="inlineFormInput"
+                      placeholder="Country"
+                      type="text"
+                      value={countryName}
+                      onChange={(e) => setCountryName(e.target.value)}
+                      required
+                    />
+                  </Col>
+                </Form.Row>
+
+                <Form.Row className="justify-content-between">
+                  <Col xs="auto">
+                    <Form.Label htmlFor="inlineFormInput" srOnly>
+                      Date
+                    </Form.Label>
+                    <Form.Control
+                      className="mb-2"
+                      id="inlineFormInput"
+                      placeholder="Date"
+                      type="date"
+                      value={date}
+                      onChange={(e) => setDate(e.target.value)}
+                    />
+                  </Col>
+                  <Col xs="auto">
+                    <Form.Label htmlFor="inlineFormInput" srOnly>
+                      number
+                    </Form.Label>
+                    <Form.Control
+                      className="mb-2"
+                      id="inlineFormInput"
+                      placeholder="Duration"
+                      type="number"
+                      value={duration}
+                      onChange={(e) => setDuration(e.target.value)}
+                    />
+                  </Col>
+
+                  <Col xs="auto">
+                    <Button
+                      type="submit"
+                      className="mb-2"
+                      variant="warning"
+                      onClick={closeAddTrip}
+                    >
+                      Submit
+                    </Button>
+                  </Col>
+                </Form.Row>
+              </Form>
+            </Modal.Body>
+          </Modal>
+        </div>
+      </Container>
     </Container>
   );
 };

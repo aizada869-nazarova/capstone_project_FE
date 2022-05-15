@@ -37,7 +37,7 @@ function Login() {
       if (response.ok) {
         const users = await response.json();
         localStorage.setItem("accessToken", users.accessToken);
-        navigate("/");
+        navigate("/travels");
 
         setData({
           email: "",
@@ -58,8 +58,8 @@ function Login() {
     });
   };
   return (
-    <div className="body_back d-flex">
-      <Container className="d-flex justify-content-center login align-self-center align-center">
+    <div className=" d-flex  body_back ">
+      <Container className=" d-flex justify-content-center login align-self-center align-center">
         <Row className="d-flex justify-content-center main_form">
           <Col md={12}>
             <Form onSubmit={handleSubmit}>

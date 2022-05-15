@@ -11,7 +11,7 @@ import {
 import { format, parseISO } from "date-fns";
 import "../styles/Card.css";
 import { useNavigate } from "react-router-dom";
-import { BiEditAlt } from "react-icons/bi";
+
 import { FaPlaneArrival, FaPlaneDeparture } from "react-icons/fa";
 import IconButton from "@material-ui/core/IconButton";
 

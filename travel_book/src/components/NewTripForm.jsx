@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import Loading from "./Loading";
+import Error from "./Error";
 
 import { FaPlaneArrival, FaPlaneDeparture } from "react-icons/fa";
-import DisplayNewTrips from "./DisplayNewTrips";
+
 import {
   Container,
   Form,
@@ -14,7 +16,7 @@ import {
 } from "react-bootstrap";
 import SingleTrip from "./SingleTrip";
 
-const NewTripForm = () => {
+const NewTripForm = ({ userId }) => {
   const url = "http://localhost:3001/travels";
 
   const [trips, setTrips] = useState([]);
@@ -35,6 +37,8 @@ const NewTripForm = () => {
   const [travelWith, setTravelWith] = useState([]);
   const [arrivalDate, setArrivalDate] = useState("");
   const [arrivalTime, setArrivalTime] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +54,7 @@ const NewTripForm = () => {
       arrivalTime: arrivalTime,
       transport: transport,
       travelWith: travelWith,
-      userId: "6259d0ef3c13cbc5bbdb7caa",
+      userId: userId,
     };
     try {
       const token = localStorage.getItem("accessToken");
@@ -72,13 +76,6 @@ const NewTripForm = () => {
       });
       console.log("enteredValue", trip);
     } catch (error) {
-      // if (response.ok) {
-      //   const data = response.json();
-      //   fetchExperiences();
-      //   setExperienceChanged((count) => count + 1);
-      // } else {
-      //   console.error("fetch failed");
-      // }
       console.error(error, "from catch");
     }
   };
@@ -97,11 +94,16 @@ const NewTripForm = () => {
         const newData = await response.json();
         console.log(newData);
         setTrips(newData);
+        setIsLoading(false);
       } else {
         console.log("fetch failed on line 86");
+        setIsError(true);
+        setIsLoading(false);
       }
     } catch (error) {
       console.log("I am catch error from line 90");
+      setIsError(true);
+      setIsLoading(false);
     }
   };
 
@@ -128,7 +130,12 @@ const NewTripForm = () => {
 
       {/* <Container className="d-flex justify-content-center"> */}
       <Row className="d-flex justify-content-center" style={{ rowGap: "10px" }}>
-        {trips &&
+        {trips.length === 0 && isError === false && isLoading === false ? (
+          <h3 style={{ color: " #eff871" }}>
+            You have not added any trip yet!
+          </h3>
+        ) : (
+          trips &&
           trips.map(
             (
               {
@@ -174,7 +181,8 @@ const NewTripForm = () => {
                 />
               </Col>
             )
-          )}
+          )
+        )}
       </Row>
       {/* </Container> */}
 

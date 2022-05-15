@@ -8,4 +8,6 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-blend-mode: overlay;
+  background-color: #323234;
 }
