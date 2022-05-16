@@ -1,20 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { FcCalendar } from "react-icons/fc";
-import IconButton from "@material-ui/core/IconButton";
 import "../styles/Card.css";
 import "../styles/Home.css";
-import AddIcon from "@material-ui/icons/Add";
-
-import {
-  Container,
-  Form,
-  Button,
-  Col,
-  Row,
-  Modal,
-  InputGroup,
-  FormControl,
-} from "react-bootstrap";
+import { Container, Form, Button, Col, Row, Modal } from "react-bootstrap";
 
 import EditVisitedCountry from "./EditVisitedCountry";
 import NavbarHome from "./NavbarHome";

@@ -4,9 +4,9 @@
   color: rgb(235, 227, 227);
   background-repeat: no-repeat;
   background-position: center;
-  -webkit-background-size: cover;
+  /* -webkit-background-size: cover;
   -moz-background-size: cover;
-  -o-background-size: cover;
+  -o-background-size: cover; */
   background-size: cover;
   background-blend-mode: overlay;
   background-color: #323234;

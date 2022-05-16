@@ -203,7 +203,7 @@ function Register() {
                   <Col md={12}>
                     <Button
                       className="login_button "
-                      variant="outline-secondary"
+                      variant="outline-light"
                       type="submit"
                     >
                       Sign Up

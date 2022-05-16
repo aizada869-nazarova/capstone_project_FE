@@ -103,35 +103,15 @@ const SingleTodoList = ({
 
   return (
     <>
-      {/* <ListGroup style={{ color: "dark" }}>
-        <ListGroup.Item className="d-flex">
-          <Form.Check aria-label="option 1" />
-          { singleTodoList}
-        </ListGroup.Item>
-        <Button
-          variant="outline-light"
-          className="rounded-pill button"
-          onClick={() => {
-            setSelectedTodo(id);
-            showEditPlace();
-            // navigate(`/${id}`)
-          }}
-        >
-          Edit{" "}
-        </Button>
-      </ListGroup> */}
-
       <div className="mt-6 w-100">
         <ListGroup style={{ color: "dark" }} className="mb-2">
           <ListGroup.Item id="list_group">
             <Row>
               <Col className="d-flex">
-                {/* <Form.Check aria-label="option 1" />{" "}
-                <strong>{ singleTodoList}</strong> */}
                 <label>
                   <input type="checkbox" />
                   <i></i>
-                  <span className="checklist_span">{singleTodoList}</span>
+                  <span className="itinerary_span">{singleTodoList}</span>
                 </label>
               </Col>
               <Col xs={"auto"}>

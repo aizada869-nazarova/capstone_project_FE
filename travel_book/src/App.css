@@ -36,22 +36,8 @@
     transform: rotate(360deg);
   }
 }
-.body{
-  
-  font-family: 'Raleway', sans-serif;
- 
-  
-/* background-image: linear-gradient(90deg, rgb(226, 240, 71) 0%, rgba(13,56,135,0.9644900196406687) 87%); 
-/* background-size: cover; */
-/* color: rgb(235, 227, 227); */
-display: flex;
-/* background-image: url("pack.jpeg"); 
-background-size: cover; */
-
-height: 100vh;
-width: 100vw;
-display: flex;
-
- 
- }
-
+.body {
+  font-family: "Raleway", sans-serif;
+  min-height: 100vh;
+  display: flex;
+}

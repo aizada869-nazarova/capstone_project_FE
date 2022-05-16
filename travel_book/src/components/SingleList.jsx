@@ -11,6 +11,7 @@ import {
 import { FaTrashAlt } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
+import "../styles/SingleList.css";
 
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 import "../styles/ListGroup.css";
@@ -119,13 +120,18 @@ const SingleList = ({
 
   return (
     <>
-      <div className="mt-6 w-100">
+      <div className="mt-6 w-100 ">
         <ListGroup style={{ color: "dark" }} className="mb-2">
-          <ListGroup.Item id="list_group">
+          <ListGroup.Item id="list_itinerary">
             <Row>
               <Col className="d-flex">
-                <Form.Check aria-label="option 1" />{" "}
-                <strong> {nameOfItem}</strong>
+                {/* <Form.Check aria-label="option 1" />{" "} */}
+                {/* <strong> {nameOfItem}</strong> */}
+                <label>
+                  <input type="checkbox" />
+                  <i></i>
+                  <span className="itinerary_span">{nameOfItem}</span>
+                </label>
               </Col>
               <Col xs={"auto"}>
                 <IconButton
@@ -134,7 +140,6 @@ const SingleList = ({
                   onClick={() => {
                     setSelectedList(id);
                     showEditTrip();
-                    // navigate(`/${id}`)
                   }}
                 >
                   <DragIndicatorIcon fontSize="small" className="color_icon" />

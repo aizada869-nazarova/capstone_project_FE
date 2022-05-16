@@ -1,11 +1,4 @@
-.text_itenerary {
-  font-family: "Courier New", Courier, monospace;
-  font-size: small;
-}
-.size {
-  width: 25rem;
-}
-.list_itinerary {
+#list_itinerary {
   position: relative;
   background-color: rgba(225, 225, 225, 0.1);
   border-radius: 1rem;
@@ -27,7 +20,7 @@
   display: flex;
   padding-right: 5px;
 }
-.list_itinerary h4 {
+#list_itinerary h4 {
   /* color: antiquewhite; */
   color: rgb(255, 253, 253);
   padding: 10px;
@@ -36,7 +29,7 @@
   border-bottom: 3px solid #ce9f11;
 }
 
-.list_itinerary label {
+#list_itinerary label {
   position: relative;
   display: block !important;
   margin-bottom: 0px;
@@ -44,11 +37,11 @@
   cursor: pointer;
 }
 
-.list_itinerary input[type="checkbox"] {
+#list_itinerary input[type="checkbox"] {
   -webkit-appearance: none;
 }
 
-.list_itinerary i {
+#list_itinerary i {
   margin-top: 3px;
   position: absolute;
   top: 0;
@@ -58,7 +51,7 @@
   border: 1px solid #fff;
 }
 
-.list_itinerary input[type="checkbox"]:checked ~ i {
+#list_itinerary input[type="checkbox"]:checked ~ i {
   top: 1px;
   border-top: none;
   border-right: none;
@@ -68,10 +61,10 @@
 }
 
 /* .list_checklist span {
-    position: relative;
-    left: 40px;
-    transition: 0, 5s;
-  } */
+      position: relative;
+      left: 40px;
+      transition: 0, 5s;
+    } */
 .itinerary_span {
   position: relative;
   left: 25px;
@@ -91,22 +84,12 @@
   transition: transform 0.5s;
 }
 
-.list_itinerary input[type="checkbox"]:checked ~ span:before {
+#list_itinerary input[type="checkbox"]:checked ~ span:before {
   transform: translateX(0%) scale(1);
   transform-origin: left;
   transition: transform 0.5s;
 }
 
-.list_itinerary input[type="checkbox"]:checked ~ span {
+#list_itinerary input[type="checkbox"]:checked ~ span {
   color: #154e6b;
-}
-
-.size_icon {
-  font-size: initial;
-}
-
-.h_5 {
-  display: flex;
-  justify-content: center;
-  color: beige;
 }

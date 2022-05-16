@@ -48,7 +48,7 @@ function App() {
 
   useEffect(() => {
     fetchTrips();
-  }, [userId]);
+  }, []);
 
   return (
     <div className="App body">

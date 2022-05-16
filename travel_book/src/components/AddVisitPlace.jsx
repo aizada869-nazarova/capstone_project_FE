@@ -109,7 +109,7 @@ const AddVisitPlace = (props) => {
               </Button> */}
               <InputGroup className="mb-3" size="sm">
                 <FormControl
-                  placeholder="enter plan..."
+                  placeholder="enter place..."
                   aria-label="todo"
                   aria-describedby="basic-addon2"
                   value={singlePlace}

@@ -22,7 +22,7 @@ function MainHome() {
           <Col>
             <Button
               className="home_button"
-              variant="outline-secondary"
+              variant="warning"
               onClick={() => {
                 navigate(`/register`);
               }}
@@ -33,7 +33,7 @@ function MainHome() {
           <Col>
             <Button
               className="home_button"
-              variant="outline-secondary"
+              variant="warning"
               onClick={() => {
                 navigate(`/login`);
               }}

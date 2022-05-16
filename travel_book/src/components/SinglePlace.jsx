@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup, Form, Button, Col, Modal, Row } from "react-bootstrap";
 import { FaTrashAlt, FaRegEdit } from "react-icons/fa";
-import { useParams, useNavigate } from "react-router-dom";
-import IconButton from "@material-ui/core/IconButton";
-import EditIcon from "@material-ui/icons/Edit";
 
-import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
+import IconButton from "@material-ui/core/IconButton";
+
 const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
   const token = localStorage.getItem("accessToken");
 
@@ -99,24 +97,6 @@ const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
 
   return (
     <>
-      {/* <ListGroup style={{ color: "dark" }}>
-        <ListGroup.Item className="d-flex">
-          <Form.Check aria-label="option 1" />
-          {singlePlace}
-        </ListGroup.Item>
-        <Button
-          variant="outline-light"
-          className="rounded-pill button"
-          onClick={() => {
-            setSelectedPlace(id);
-            showEditPlace();
-            // navigate(`/${id}`)
-          }}
-        >
-          Edit{" "}
-        </Button>
-      </ListGroup> */}
-
       <div className="mt-6 w-100">
         <ListGroup style={{ color: "dark" }} className="mb-2">
           <ListGroup.Item id="list_group">
@@ -127,7 +107,7 @@ const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
                 <label>
                   <input type="checkbox" />
                   <i></i>
-                  <span className="checklist_span">{singlePlace}</span>
+                  <span className="itinerary_span">{singlePlace}</span>
                 </label>
               </Col>
               <Col xs={"auto"} className="d-flex">

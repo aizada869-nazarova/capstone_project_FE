@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Checklist.css";
 import { Container, Row, Col } from "react-bootstrap";
 import NavbarOfTrip from "./NavbarOfTrip";
-// import "../styles/Overview.css"
+
 function Checklist() {
   return (
     <Container fluid className="overview_bg">
@@ -20,7 +20,10 @@ function Checklist() {
       <Row>
         <Col xs={12} className="d-flex justify-content-center">
           <div className="list_checklist text size ">
-            <h4>What to arrange before trip</h4>
+            <div className="h_5">
+              {" "}
+              <h4>What to arrange before trip</h4>
+            </div>
             <div className="px-3 pb-3">
               <label>
                 <input type="checkbox" />

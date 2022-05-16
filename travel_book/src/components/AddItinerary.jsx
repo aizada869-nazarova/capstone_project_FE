@@ -10,7 +10,6 @@ import {
   FormControl,
 } from "react-bootstrap";
 import SingleItinerary from "./SingleItinerary";
-import AddVisitPlace from "./AddVisitPlace";
 import NavbarOfTrip from "./NavbarOfTrip";
 
 function AddItinerary() {
@@ -84,7 +83,6 @@ function AddItinerary() {
 
   return (
     <>
-      {/* className="profile-sub-section mt-4 single-list-item" */}
       <Container fluid className="paking_back">
         <Row>
           <Col>
@@ -120,13 +118,7 @@ function AddItinerary() {
                     />
                   </InputGroup>
                 </Col>
-                {/* <Col xs={6} md={4}>
-              <InputGroup className="mb-3">
-                <InputGroup.Prepend>
-                  <InputGroup.Text>C</InputGroup.Text>
-                </InputGroup.Prepend>
-              </InputGroup>
-            </Col> */}
+
                 <Col xs={12} md={2}>
                   <Button
                     type="submit"
@@ -141,13 +133,7 @@ function AddItinerary() {
             </Form>
           </Col>
         </Row>
-        {/* </Container>
- 
- 
 
-          <Container> */}
-        {/* <Row> */}
-        {/* <Container> */}
         <Row className="justify-content-center">
           {itineraries &&
             itineraries.map(({ itinerary, _id: id }, i) => (
@@ -168,9 +154,7 @@ function AddItinerary() {
                 //{" "}
               </Col>
             ))}
-          {/* </Row> */}
         </Row>
-        {/* </Container> */}
       </Container>
     </>
   );

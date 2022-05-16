@@ -39,7 +39,7 @@ function NavbarOfTrip() {
               <FaLuggageCart /> Packing List{" "}
             </Nav.Link>
             <Nav.Link href={`/itinerary/${travelId}`}>
-              <BsCardChecklist /> Itinererary
+              <BsCardChecklist /> Itinerary
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
