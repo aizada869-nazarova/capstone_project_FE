@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaPlus } from "react-icons/fa";
 
 import {
   Container,
@@ -83,31 +84,22 @@ const AddTodoLists = (props) => {
       <Container>
         <Form onSubmit={handleSubmit}>
           <Row>
-            <Col xs={12} md={8}>
-              <InputGroup className="mb-3">
-                <InputGroup.Prepend>
-                  <InputGroup.Text id="basic-addon1">T</InputGroup.Text>
-                </InputGroup.Prepend>
+            <Col xs={12} md={12}>
+              <InputGroup className="mb-3" size="sm">
                 <FormControl
-                  placeholder="enter todo "
+                  placeholder="enter plan..."
                   aria-label="todo"
-                  aria-describedby="todo"
-                  name="singleTodoList"
+                  aria-describedby="basic-addon2"
                   value={singleTodoList}
                   onChange={(e) => setSingleTodoList(e.target.value)}
                   required
                 />
+                <InputGroup.Append>
+                  <Button variant="outline-secondary " type="submit">
+                    <FaPlus />
+                  </Button>
+                </InputGroup.Append>
               </InputGroup>
-            </Col>
-
-            <Col xs="auto">
-              <Button
-                type="submit"
-                className="mb-2"
-                style={{ background: "#ce9f11" }}
-              >
-                Submit
-              </Button>
             </Col>
           </Row>
         </Form>

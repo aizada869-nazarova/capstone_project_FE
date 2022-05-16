@@ -18,6 +18,8 @@ import {
 
 import EditVisitedCountry from "./EditVisitedCountry";
 import NavbarHome from "./NavbarHome";
+import Loading from "./Loading";
+import Error from "./Error";
 
 const AddVisitedCountry = ({ newUserId }) => {
   const url = "http://localhost:3001/visitedCountry";
@@ -25,6 +27,8 @@ const AddVisitedCountry = ({ newUserId }) => {
   const [trips, setTrips] = useState([]);
   const [addTrip, setAddTrip] = useState(false);
   const [tripChanged, setTripChanged] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const closeAddTrip = () => setAddTrip(false);
   const showAddTrip = () => setAddTrip(true);
@@ -66,13 +70,6 @@ const AddVisitedCountry = ({ newUserId }) => {
       });
       console.log("enteredValue", trip);
     } catch (error) {
-      // if (response.ok) {
-      //   const data = response.json();
-      //   fetchExperiences();
-      //   setExperienceChanged((count) => count + 1);
-      // } else {
-      //   console.error("fetch failed");
-      // }
       console.error(error, "from catch");
     }
   };
@@ -91,10 +88,15 @@ const AddVisitedCountry = ({ newUserId }) => {
         const newData = await response.json();
         console.log(newData);
         setTrips(newData);
+        setIsLoading(false);
       } else {
+        setIsError(true);
+        setIsLoading(false);
         console.log("fetch failed on line 86");
       }
     } catch (error) {
+      setIsError(true);
+      setIsLoading(false);
       console.log("I am catch error from line 90", error);
     }
   };
@@ -129,7 +131,12 @@ const AddVisitedCountry = ({ newUserId }) => {
             className="d-flex justify-content-center"
             style={{ rowGap: "10px" }}
           >
-            {trips &&
+            {trips.length === 0 && isError === false && isLoading === false ? (
+              <h3 style={{ color: " #eff871" }}>
+                You have not added any visited country yet!
+              </h3>
+            ) : (
+              trips &&
               trips.map(
                 ({ cityName, _id: id, countryName, date, duration }, i) => (
                   <Col
@@ -152,7 +159,8 @@ const AddVisitedCountry = ({ newUserId }) => {
                     />
                   </Col>
                 )
-              )}
+              )
+            )}
           </Row>
           {/* </Container> */}
 

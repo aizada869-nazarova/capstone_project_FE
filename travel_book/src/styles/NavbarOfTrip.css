@@ -1,29 +1,27 @@
-.nav_bg{
-    background-color: rgba(225, 225, 225, 0.1);
-    border-radius: 1rem;
-    border: 1px solid transparent;
-    backdrop-filter: blur(1rem);
-    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
-    border-top-color:  rgba(225, 225, 225, 0.5);
-    border-left-color:  rgba(225, 225, 225, 0.5);
-    border-bottom-color:  rgba(225, 225, 225, 0.1);
-    border-right-color:  rgba(225, 225, 225, 0.1);
-    margin-top: 5px;
-    
+.nav_bg {
+  background-color: rgba(225, 225, 225, 0.1);
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  backdrop-filter: blur(1rem);
+  box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+  border-top-color: rgba(225, 225, 225, 0.5);
+  border-left-color: rgba(225, 225, 225, 0.5);
+  border-bottom-color: rgba(225, 225, 225, 0.1);
+  border-right-color: rgba(225, 225, 225, 0.1);
+  margin-top: 5px;
 }
 
-.nav_text{
-    justify-content: space-evenly;
-    
+.nav_text {
+  justify-content: space-around;
 }
 
-.icon{
-    font-size: x-large;
-   color: beige;
+.icon {
+  font-size: x-large;
+  color: beige;
 }
 
-.text_color{
-    color:beige
+.text_color {
+  color: beige;
 }
 
 /* .nav-link {color: #f00;}

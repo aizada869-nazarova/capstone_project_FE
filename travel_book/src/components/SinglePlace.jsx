@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup, Form, Button, Col, Modal, Row } from "react-bootstrap";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaRegEdit } from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
@@ -130,7 +130,7 @@ const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
                   <span className="checklist_span">{singlePlace}</span>
                 </label>
               </Col>
-              <Col xs={"auto"}>
+              <Col xs={"auto"} className="d-flex">
                 <IconButton
                   size="small"
                   aria-label="add an alarm"
@@ -140,7 +140,10 @@ const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
                     // navigate(`/${id}`)
                   }}
                 >
-                  <EditIcon fontSize="small" className="color_icon" />
+                  <FaRegEdit
+                    className="color_icon"
+                    style={{ fontsize: "initial" }}
+                  />
                 </IconButton>
               </Col>
             </Row>

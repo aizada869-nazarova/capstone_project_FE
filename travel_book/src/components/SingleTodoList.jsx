@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup, Form, Button, Col, Modal, Row } from "react-bootstrap";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaRegEdit } from "react-icons/fa";
 
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
@@ -144,7 +144,11 @@ const SingleTodoList = ({
                     // navigate(`/${id}`)
                   }}
                 >
-                  <EditIcon fontSize="small" className="color_icon" />
+                  <FaRegEdit
+                    fontSize="small"
+                    className="color_icon"
+                    style={{ fontsize: "initial" }}
+                  />
                 </IconButton>
               </Col>
             </Row>

@@ -1,10 +1,11 @@
 .text {
   font-family: "Courier New", Courier, monospace;
+  font-size: small;
 }
 .size {
   width: 25rem;
 }
-.list_checklist {
+.list_itinerary {
   position: relative;
   background-color: rgba(225, 225, 225, 0.1);
   border-radius: 1rem;
@@ -19,36 +20,44 @@
   text-align: initial;
 }
 
-.list_checklist h4 {
+.display {
+  display: flex;
+}
+.icon_button {
+  display: flex;
+  padding-right: 5px;
+}
+.list_itinerary h4 {
   /* color: antiquewhite; */
   color: rgb(255, 253, 253);
   padding: 10px;
-  display: inline-block;
+  margin-left: 20px;
+
   border-bottom: 4px solid #ce9f11;
 }
 
-.list_checklist label {
+.list_itinerary label {
   position: relative;
   display: block !important;
-  margin-top: 10px;
+  margin-bottom: 0px;
   color: antiquewhite;
   cursor: pointer;
 }
 
-.list_checklist input[type="checkbox"] {
+.list_itinerary input[type="checkbox"] {
   -webkit-appearance: none;
 }
 
-.list_checklist i {
+.list_itinerary i {
   position: absolute;
   top: 0;
   display: inline-block;
-  width: 25px;
-  height: 25px;
-  border: 2px solid #fff;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #fff;
 }
 
-.list_checklist input[type="checkbox"]:checked ~ i {
+.list_itinerary input[type="checkbox"]:checked ~ i {
   top: 1px;
   border-top: none;
   border-right: none;
@@ -58,17 +67,17 @@
 }
 
 /* .list_checklist span {
-  position: relative;
-  left: 40px;
-  transition: 0, 5s;
-} */
-.checklist_span {
+    position: relative;
+    left: 40px;
+    transition: 0, 5s;
+  } */
+.itinerary_span {
   position: relative;
   left: 40px;
   transition: 0, 5s;
 }
 
-.checklist_span:before {
+.itinerary_span:before {
   content: "";
   position: absolute;
   top: 50%;
@@ -81,12 +90,22 @@
   transition: transform 0.5s;
 }
 
-.list_checklist input[type="checkbox"]:checked ~ span:before {
+.list_itinerary input[type="checkbox"]:checked ~ span:before {
   transform: translateX(0%) scale(1);
   transform-origin: left;
   transition: transform 0.5s;
 }
 
-.list_checklist input[type="checkbox"]:checked ~ span {
+.list_itinerary input[type="checkbox"]:checked ~ span {
   color: #154e6b;
+}
+
+.size_icon {
+  font-size: initial;
+}
+
+.h_5 {
+  display: flex;
+  justify-content: center;
+  color: beige;
 }

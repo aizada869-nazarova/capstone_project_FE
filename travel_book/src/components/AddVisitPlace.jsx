@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { FaPlus } from "react-icons/fa";
 import {
   Container,
   Row,
@@ -84,13 +84,11 @@ const AddVisitPlace = (props) => {
       <Container>
         <Form onSubmit={handleSubmit}>
           <Row>
-            <Col xs={12} md={8}>
-              <InputGroup className="mb-3">
-                <InputGroup.Prepend>
-                  <InputGroup.Text id="basic-addon1">T</InputGroup.Text>
-                </InputGroup.Prepend>
+            <Col xs={12} md={12}>
+              {/* <InputGroup size="sm" className="mb-3">
+                
                 <FormControl
-                  placeholder="enter place and activity"
+                  placeholder="enter place..."
                   aria-label="Name of item"
                   aria-describedby="Name of item"
                   name="singlePlace"
@@ -108,7 +106,22 @@ const AddVisitPlace = (props) => {
                 style={{ background: "#ce9f11" }}
               >
                 Submit
-              </Button>
+              </Button> */}
+              <InputGroup className="mb-3" size="sm">
+                <FormControl
+                  placeholder="enter plan..."
+                  aria-label="todo"
+                  aria-describedby="basic-addon2"
+                  value={singlePlace}
+                  onChange={(e) => setSinglePlace(e.target.value)}
+                  required
+                />
+                <InputGroup.Append>
+                  <Button variant="outline-secondary " type="submit">
+                    <FaPlus />
+                  </Button>
+                </InputGroup.Append>
+              </InputGroup>
             </Col>
           </Row>
         </Form>

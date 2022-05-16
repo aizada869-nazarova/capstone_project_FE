@@ -133,7 +133,7 @@ const EditVisitedCountry = ({
       >
         <Card.Body>
           <span className="card_number fw-bold">{index + 1}</span>
-          <Card.Title>Visited country</Card.Title>
+          <Card.Title className="card_title">Visited country</Card.Title>
           <Card.Text>
             {cityName}, {countryName}
           </Card.Text>
@@ -179,7 +179,7 @@ const EditVisitedCountry = ({
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Row className="justify-content-between">
-              <Col xs="auto">
+              <Col xs={12} md={6}>
                 <Form.Label htmlFor="inlineFormInput" srOnly>
                   City
                 </Form.Label>
@@ -193,7 +193,7 @@ const EditVisitedCountry = ({
                   required
                 />
               </Col>
-              <Col xs="auto">
+              <Col xs={12} md={6}>
                 <Form.Label htmlFor="inlineFormInput" srOnly>
                   Country
                 </Form.Label>
@@ -210,7 +210,7 @@ const EditVisitedCountry = ({
             </Form.Row>
 
             <Form.Row className="justify-content-between">
-              <Col xs="auto">
+              <Col xs={12} md={6}>
                 <Form.Label htmlFor="inlineFormInput" srOnly>
                   Date
                 </Form.Label>
@@ -223,7 +223,7 @@ const EditVisitedCountry = ({
                   onChange={(e) => setNewDate(e.target.value)}
                 />
               </Col>
-              <Col xs="auto">
+              <Col xs={12} md={6}>
                 <Form.Label htmlFor="inlineFormInput" srOnly>
                   number
                 </Form.Label>
@@ -250,6 +250,7 @@ const EditVisitedCountry = ({
               <Button
                 // style={{background: "#ce9f11", border: "none"}}
                 type="submit"
+                variant="warning"
               >
                 Save changes
               </Button>

@@ -130,6 +130,7 @@ const NewTripForm = ({ userId }) => {
 
       {/* <Container className="d-flex justify-content-center"> */}
       <Row className="d-flex justify-content-center" style={{ rowGap: "10px" }}>
+        {isLoading === true && <Loading />}
         {trips.length === 0 && isError === false && isLoading === false ? (
           <h3 style={{ color: " #eff871" }}>
             You have not added any trip yet!
@@ -186,7 +187,7 @@ const NewTripForm = ({ userId }) => {
       </Row>
       {/* </Container> */}
 
-      <Modal show={addTrip} onHide={closeAddTrip}>
+      <Modal className="modal_bg" show={addTrip} onHide={closeAddTrip}>
         <Modal.Header closeButton>
           <Modal.Title>Add coming trip</Modal.Title>
         </Modal.Header>
@@ -196,7 +197,7 @@ const NewTripForm = ({ userId }) => {
               <Col sm="2">
                 <Form.Label>From</Form.Label>
               </Col>
-              <Col xs="5">
+              <Col xs="6" md="5">
                 <Form.Control
                   className="mb-2"
                   id="inlineFormInput"
@@ -207,7 +208,7 @@ const NewTripForm = ({ userId }) => {
                   required
                 />
               </Col>
-              <Col xs="5">
+              <Col xs="6" md="5">
                 {/* <Form.Label htmlFor="inlineFormInput" srOnly>
                   Country
                 </Form.Label> */}
@@ -227,7 +228,7 @@ const NewTripForm = ({ userId }) => {
               <Col sm="2">
                 <Form.Label>To</Form.Label>
               </Col>
-              <Col xs="5">
+              <Col xs="6" md="5">
                 <Form.Control
                   className="mb-2"
                   id="inlineFormInput"
@@ -238,7 +239,7 @@ const NewTripForm = ({ userId }) => {
                   required
                 />
               </Col>
-              <Col xs="5">
+              <Col xs="6" md="5">
                 {/* <Form.Label htmlFor="inlineFormInput" srOnly>
                   Country
                 </Form.Label> */}
@@ -332,10 +333,18 @@ const NewTripForm = ({ userId }) => {
                 />
               </Col>
             </Form.Row>
-
-            <Button variant="success" type="submit" onClick={closeAddTrip}>
-              Add
-            </Button>
+            <Row>
+              <Col className="w-100 d-flex justify-content-end">
+                <Button
+                  className="w-25"
+                  variant="warning"
+                  type="submit"
+                  onClick={closeAddTrip}
+                >
+                  Add
+                </Button>
+              </Col>
+            </Row>
           </Form>
         </Modal.Body>
       </Modal>

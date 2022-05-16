@@ -98,72 +98,79 @@ function AddItinerary() {
           </Col>
         </Row>
 
-        <Form onSubmit={handleSubmit}>
-          <Row>
-            <Col xs={12} md={6}>
-              <InputGroup className="mb-3">
-                <InputGroup.Prepend>
-                  <InputGroup.Text id="basic-addon1">T</InputGroup.Text>
-                </InputGroup.Prepend>
-                <FormControl
-                  placeholder="Name of item"
-                  aria-label="Name of item"
-                  aria-describedby="Name of item"
-                  name="nameOfItem"
-                  value={singleItinerary}
-                  onChange={(e) => setSingleItinerary(e.target.value)}
-                  required
-                />
-              </InputGroup>
-            </Col>
-            {/* <Col xs={6} md={4}>
+        <Row className="input_margin">
+          <Col xs={12} md={12} className="justify-content-center">
+            <Form onSubmit={handleSubmit}>
+              <Row className="justify-content-center">
+                <Col xs={12} md={6}>
+                  <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                      <InputGroup.Text id="basic-addon1">
+                        Day plan
+                      </InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl
+                      placeholder="enter day"
+                      aria-label="enter day"
+                      aria-describedby="enter day"
+                      name="nameOfItem"
+                      value={singleItinerary}
+                      onChange={(e) => setSingleItinerary(e.target.value)}
+                      required
+                    />
+                  </InputGroup>
+                </Col>
+                {/* <Col xs={6} md={4}>
               <InputGroup className="mb-3">
                 <InputGroup.Prepend>
                   <InputGroup.Text>C</InputGroup.Text>
                 </InputGroup.Prepend>
               </InputGroup>
             </Col> */}
-            <Col xs="auto">
-              <Button
-                type="submit"
-                className="mb-2"
-                style={{ background: "#ce9f11" }}
-              >
-                Submit
-              </Button>
-            </Col>
-          </Row>
-        </Form>
+                <Col xs={12} md={2}>
+                  <Button
+                    type="submit"
+                    className="mb-2 w-100"
+                    style={{ background: "#ce9f11" }}
+                    variant="warning"
+                  >
+                    <strong> Add</strong>
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </Col>
+        </Row>
         {/* </Container>
-
+ 
  
 
           <Container> */}
         {/* <Row> */}
-        <Container>
-          <Row>
-            {itineraries &&
-              itineraries.map(({ itinerary, _id: id }, i) => (
-                <Col
-                  xs={12}
-                  md={12}
-                  lg={6}
-                  key={id}
-                  className="d-flex justify-content-center"
-                >
-                  <SingleItinerary
-                    index={i}
-                    singleItinerary={itinerary}
-                    id={id}
-                    tripChanged={tripChanged}
-                    setTripChanged={() => setTripChanged((count) => count + 1)}
-                  />
-                  //{" "}
-                </Col>
-              ))}
-            {/* </Row> */}
-          </Row>
-        </Container>
+        {/* <Container> */}
+        <Row className="justify-content-center">
+          {itineraries &&
+            itineraries.map(({ itinerary, _id: id }, i) => (
+              <Col
+                xs={12}
+                md={4}
+                lg={3}
+                key={id}
+                className="d-flex justify-content-center"
+              >
+                <SingleItinerary
+                  index={i}
+                  singleItinerary={itinerary}
+                  id={id}
+                  tripChanged={tripChanged}
+                  setTripChanged={() => setTripChanged((count) => count + 1)}
+                />
+                //{" "}
+              </Col>
+            ))}
+          {/* </Row> */}
+        </Row>
+        {/* </Container> */}
       </Container>
     </>
   );

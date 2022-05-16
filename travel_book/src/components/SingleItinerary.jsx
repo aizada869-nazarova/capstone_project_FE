@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { ListGroup, Form, Button, Col, Modal, Row } from "react-bootstrap";
 import { FaTrashAlt } from "react-icons/fa";
-import { useParams, useNavigate } from "react-router-dom";
+
 import "../styles/ListGroup.css";
+import "../styles/Itinerary.css";
 import AddVisitPlace from "./AddVisitPlace";
 import IconButton from "@material-ui/core/IconButton";
 
@@ -107,44 +108,63 @@ const SingleItinerary = ({
 
   return (
     <>
-      <Row>
-        <Col xs={12} className="d-flex justify-content-center">
-          <div className="list_checklist text size ">
-            <Row>
-              <Col className="d-flex">
-                <h2>{singleItinerary}</h2>{" "}
-              </Col>
-              <Col xs={"auto"}>
-                {" "}
-                <IconButton
-                  size="small"
-                  aria-label="add an alarm"
-                  onClick={() => {
-                    setSelectedItinerary(id);
-                    showEditItinerary();
-                    // navigate(`/${id}`)
-                  }}
-                >
-                  <DragIndicatorIcon fontSize="small" className="color_icon" />
-                </IconButton>
-              </Col>
-            </Row>
-            <div>
-              <h2>
-                {" "}
-                <span className="checklist_span">Visits and Activities</span>
-              </h2>
-              <span>
-                {" "}
-                <AddVisitPlace itineraryId={id} />
-              </span>
-              <span>
-                <AddTodoLists itineraryId={id} />
-              </span>
-            </div>
+      {/* <Row>
+        <Col xs={12} className="d-flex justify-content-center"> */}
+      <div className="list_itinerary text size  ">
+        {/* <Row> */}
+        <div className="display justify-content-between">
+          <div>
+            <h4>{singleItinerary}</h4>{" "}
           </div>
-        </Col>
-      </Row>
+          {/* </Col>
+          <Col> */}{" "}
+          <div className="icon_button">
+            <IconButton
+              size="small"
+              className="size_icon"
+              aria-label="add an alarm"
+              onClick={() => {
+                setSelectedItinerary(id);
+                showEditItinerary();
+                // navigate(`/${id}`)
+              }}
+            >
+              <DragIndicatorIcon className="color_icon" />
+            </IconButton>
+            {/* </Row> */}
+          </div>
+        </div>
+        <div>
+          {/* <Button
+            variant="outline-light"
+            style={{ color: "black" }}
+            className="mx-1"
+            
+          >
+            Add place to visit
+          </Button > */}{" "}
+          {/* <h2>
+            {" "}
+            <span className="itinerary_span">Visits and Activities</span>
+          </h2> */}
+          <div className="h_5">
+            <h5>Place to visit</h5>
+          </div>
+          <span>
+            {" "}
+            <AddVisitPlace itineraryId={id} />
+          </span>
+          <div className="h_5">
+            {" "}
+            <h5>Add to do list</h5>{" "}
+          </div>{" "}
+          <span>
+            <AddTodoLists itineraryId={id} />
+          </span>
+        </div>
+      </div>
+      {/* </Col>
+      </Row> */}
 
       {/* <ListGroup>
         <ListGroup.Item>{singleItinerary}</ListGroup.Item>
@@ -163,19 +183,19 @@ const SingleItinerary = ({
 
       <Modal show={editItinerary} onHide={closeEditItinerary}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit packing list</Modal.Title>
+          <Modal.Title>Edit day plan</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Row className="justify-content-between">
               <Col xs="auto">
                 <Form.Label htmlFor="inlineFormInput" srOnly>
-                  name of item
+                  Planning your day
                 </Form.Label>
                 <Form.Control
                   className="mb-2"
                   id="inlineFormInput"
-                  placeholder="name of item"
+                  placeholder="enter Day "
                   type="text"
                   value={newEnteredItinerary}
                   onChange={(e) => setNewEnteredItinerary(e.target.value)}

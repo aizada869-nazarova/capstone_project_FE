@@ -12,8 +12,9 @@ import { format, parseISO } from "date-fns";
 import "../styles/Card.css";
 import { useNavigate } from "react-router-dom";
 
-import { FaPlaneArrival, FaPlaneDeparture } from "react-icons/fa";
+import { FaPlaneArrival, FaPlaneDeparture, FaTrashAlt } from "react-icons/fa";
 import IconButton from "@material-ui/core/IconButton";
+import Moment from "moment";
 
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 
@@ -211,7 +212,7 @@ const SingleTrip = ({
 
       <Modal show={editTrip} onHide={closeEditTrip}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Experience</Modal.Title>
+          <Modal.Title>Edit Coming trip</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
@@ -219,7 +220,7 @@ const SingleTrip = ({
               <Col sm="2">
                 <Form.Label>From</Form.Label>
               </Col>
-              <Col xs="5">
+              <Col xs="6" md="5">
                 <Form.Control
                   className="mb-2"
                   id="citytrip"
@@ -230,7 +231,7 @@ const SingleTrip = ({
                   required
                 />
               </Col>
-              <Col xs="5">
+              <Col xs="6" md="5">
                 {/* <Form.Label htmlFor="inlineFormInput" srOnly>
                   Country
                 </Form.Label> */}
@@ -250,7 +251,7 @@ const SingleTrip = ({
               <Col sm="2">
                 <Form.Label>To</Form.Label>
               </Col>
-              <Col xs="5">
+              <Col xs="6" md="5">
                 <Form.Control
                   className="mb-2"
                   id="tocity"
@@ -261,7 +262,7 @@ const SingleTrip = ({
                   required
                 />
               </Col>
-              <Col xs="5">
+              <Col xs="6" md="5">
                 {/* <Form.Label htmlFor="inlineFormInput" srOnly>
                   Country
                 </Form.Label> */}
@@ -321,7 +322,7 @@ const SingleTrip = ({
                 <Form.Control
                   placeholder="Time"
                   type="time"
-                  value={newDepartureTime.slice(0, 10)}
+                  value={newDepartureTime}
                   onChange={(e) => setNewDepartureTime(e.target.value)}
                 />
               </Col>
@@ -340,7 +341,7 @@ const SingleTrip = ({
                     id="dateofarrival"
                     placeholder="Arrival"
                     type="date"
-                    value={newArrivalDate}
+                    value={newArrivalDate.slice(0, 10)}
                     onChange={(e) => setNewArrivalDate(e.target.value)}
                     required
                   />
@@ -356,17 +357,17 @@ const SingleTrip = ({
               </Col>
             </Form.Row>
 
-            <div className="d-flex justify-content-end">
+            <div className="d-flex justify-content-between">
               <Button
                 variant="danger"
                 type="button"
                 className="mr-4"
                 onClick={handleDeleteExperience}
               >
-                Delete
+                <FaTrashAlt />
               </Button>
-              <Button variant="success" type="submit">
-                Save
+              <Button variant="warning" type="submit">
+                Save changes
               </Button>
             </div>
           </Form>

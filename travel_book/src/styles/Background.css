@@ -4,10 +4,11 @@
   background-color: #1f1d22;
   background-repeat: no-repeat;
   background-position: center;
-  -webkit-background-size: cover;
+  /* -webkit-background-size: cover;
   -moz-background-size: cover;
-  -o-background-size: cover;
+  -o-background-size: cover; */
   background-size: cover;
+  height: 100vh;
 }
 
 .input_margin {
