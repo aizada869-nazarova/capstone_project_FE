@@ -18,6 +18,7 @@ import MainHome from "./components/MainHome";
 import Overview from "./components/Overview";
 import Checklist from "./components/Checklist";
 import { useEffect, useState } from "react";
+import UploadPic from "./components/UploadPic";
 
 function App() {
   const url = "http://localhost:3001/users/me";
@@ -64,6 +65,10 @@ function App() {
           <Route
             path="/visitedCountry/:visitedCountry"
             element={<EditVisitedCountry />}
+          />
+          <Route
+            path="/visitedCountry/:visitedCountry/uploadPictures"
+            element={<UploadPic />}
           />
           <Route path="/travels" element={<Home newUserId={userId} />} />
           <Route path="/travels/:travelId" element={<TripDetails />} />

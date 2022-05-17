@@ -149,7 +149,7 @@ const EditVisitedCountry = ({
                 className="rounded-pill button"
                 onClick={() => {
                   // setSelectedTrip(id);
-                  navigate(`/visitedCountry/${id}`);
+                  navigate(`/visitedCountry/${id}/uploadPictures`);
                 }}
               >
                 {" "}
