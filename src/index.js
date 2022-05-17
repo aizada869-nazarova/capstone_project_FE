@@ -9,11 +9,7 @@ import { configureStore } from "./redux/store";
 import { persistor } from "./redux/store";
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={configureStore}>
-      <PersistGate persistor={persistor}>
-        <App />
-      </PersistGate>
-    </Provider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
