@@ -17,7 +17,7 @@ import Loading from "./Loading";
 import Error from "./Error";
 
 const AddVisitedCountry = ({ newUserId }) => {
-  const url = "http://localhost:3001/visitedCountry";
+  const url = "https://personal-travel-book.herokuapp.com/visitedCountry";
 
   const [trips, setTrips] = useState([]);
   const [addTrip, setAddTrip] = useState(false);

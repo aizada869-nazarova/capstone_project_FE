@@ -7,7 +7,7 @@ function UploadPic() {
   const [imageSrc, setImageSrc] = useState(null);
 
   const [tripChanged, setTripChanged] = useState(0);
-  const url = "http://localhost:3001/visitedCountry";
+  const url = "https://personal-travel-book.herokuapp.com/visitedCountry";
   let { visitedCountry } = useParams();
   const addPostFunction = async (e) => {
     e.preventDefault();

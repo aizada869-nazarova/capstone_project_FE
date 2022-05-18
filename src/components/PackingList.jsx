@@ -17,7 +17,7 @@ import NavbarOfTrip from "./NavbarOfTrip";
 function PackingList() {
   let { travelId } = useParams();
 
-  const url = `http://localhost:3001/travels/${travelId}/pakinglist`;
+  const url = `https://personal-travel-book.herokuapp.com/travels/${travelId}/pakinglist`;
   const token = localStorage.getItem("accessToken");
 
   const [packinglists, setPakinglists] = useState([]);

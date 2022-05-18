@@ -36,7 +36,7 @@ const SingleList = ({
   const [newNameOfItem, setNewNameOfItem] = useState("");
   const [newCategory, setNewCategory] = useState("");
 
-  const url = `http://localhost:3001/travels/${travelId}/pakinglist`;
+  const url = `https://personal-travel-book.herokuapp.com/travels/${travelId}/pakinglist`;
   const closeEditTrip = () => setEditList(false);
   const showEditTrip = async () => {
     setEditList(true);

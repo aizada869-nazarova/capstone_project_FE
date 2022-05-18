@@ -15,7 +15,7 @@ import NavbarOfTrip from "./NavbarOfTrip";
 function AddItinerary() {
   let { travelId } = useParams();
 
-  const url = `http://localhost:3001/itinerary`;
+  const url = `https://personal-travel-book.herokuapp.com/itinerary`;
 
   const [itineraries, setItineraries] = useState([]);
 

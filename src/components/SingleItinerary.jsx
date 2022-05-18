@@ -26,7 +26,7 @@ const SingleItinerary = ({
 
   const [newEnteredItinerary, setNewEnteredItinerary] = useState("");
 
-  const url = `http://localhost:3001/itinerary`;
+  const url = `https://personal-travel-book.herokuapp.com/itinerary`;
   const closeEditItinerary = () => setEditItinerary(false);
   const showEditItinerary = async () => {
     setEditItinerary(true);

@@ -21,7 +21,7 @@ const SingleTodoList = ({
 
   const [newEnteredTodo, setNewEnteredTodo] = useState("");
 
-  const url = `http://localhost:3001/itinerary/${itineraryid}/todo`;
+  const url = `https://personal-travel-book.herokuapp.com/itinerary/${itineraryid}/todo`;
   const closeEditPlace = () => setEditTodo(false);
   const showEditPlace = async () => {
     setEditTodo(true);

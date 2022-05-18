@@ -11,7 +11,7 @@ const TripDetails = () => {
 
   let { travelId } = useParams();
   console.log(travelId);
-  const url = `http://localhost:3001/travels/${travelId}`;
+  const url = `https://personal-travel-book.herokuapp.com/travels/${travelId}`;
   const token = localStorage.getItem("accessToken");
 
   const fetchTrips = async () => {

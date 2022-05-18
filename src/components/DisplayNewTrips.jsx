@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import SingleTrip from "./SingleTrip";
-import {Col, Row, Container} from "react-bootstrap"
+import { Col, Row, Container } from "react-bootstrap";
 
 function DisplayNewTrips() {
-  const url = "http://localhost:3001/travels"
-  const [trips, setTrips]=useState([])
-  
+  const url = "https://personal-travel-book.herokuapp.com/travels";
+  const [trips, setTrips] = useState([]);
 
   const fetchTrips = async () => {
     const token = localStorage.getItem("accessToken");
@@ -21,27 +20,27 @@ function DisplayNewTrips() {
       console.log(newData);
       setTrips(newData);
     }
-  }
+  };
 
   useEffect(() => {
     fetchTrips();
   }, []);
-  
+
   return (
-<Container>
-  <Row>
-     {trips.map((trip, i)=>(
-       <Col xs={12} md={4} key={trip._id}  className="d-flex justify-content-center">
-         <SingleTrip data={trip} index={i} />
-       </Col>
-     ))
-
-     }
-
-    
-  </Row>
-</Container>
-   
+    <Container>
+      <Row>
+        {trips.map((trip, i) => (
+          <Col
+            xs={12}
+            md={4}
+            key={trip._id}
+            className="d-flex justify-content-center"
+          >
+            <SingleTrip data={trip} index={i} />
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 }
 

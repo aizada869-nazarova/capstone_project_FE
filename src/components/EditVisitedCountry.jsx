@@ -18,7 +18,7 @@ const EditVisitedCountry = ({
   setTripChanged,
   index,
 }) => {
-  const url = "http://localhost:3001/visitedCountry";
+  const url = "https://personal-travel-book.herokuapp.com/visitedCountry";
   const token = localStorage.getItem("accessToken");
   const navigate = useNavigate();
 

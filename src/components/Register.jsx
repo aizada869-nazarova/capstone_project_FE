@@ -18,7 +18,7 @@ import SupervisorAccountOutlinedIcon from "@material-ui/icons/SupervisorAccountO
 
 function Register() {
   const navigate = useNavigate();
-  const url = "http://localhost:3001/users/register";
+  const url = "https://personal-travel-book.herokuapp.com/users/register";
   const [data, setData] = useState({
     userName: "",
     surname: "",

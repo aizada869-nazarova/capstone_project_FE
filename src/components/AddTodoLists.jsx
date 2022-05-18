@@ -16,7 +16,7 @@ const AddTodoLists = (props) => {
   const itinId = props.itineraryId;
   console.log(itinId);
 
-  const url = `http://localhost:3001/itinerary`;
+  const url = `https://personal-travel-book.herokuapp.com/itinerary`;
   const [todoLists, setTodoLists] = useState([]);
 
   const [tripChanged, setTripChanged] = useState(0);

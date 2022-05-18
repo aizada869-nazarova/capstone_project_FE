@@ -17,7 +17,7 @@ import {
 import SingleTrip from "./SingleTrip";
 
 const NewTripForm = ({ userId }) => {
-  const url = "http://localhost:3001/travels";
+  const url = "https://personal-travel-book.herokuapp.com/travels";
 
   const [trips, setTrips] = useState([]);
   const [addTrip, setAddTrip] = useState(false);

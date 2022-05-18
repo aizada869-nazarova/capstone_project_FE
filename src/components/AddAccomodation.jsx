@@ -17,7 +17,7 @@ import {
 function AddAccomodation() {
   let { travelId } = useParams();
 
-  const url = `http://localhost:3001/travels/${travelId}/accommodation`;
+  const url = `https://personal-travel-book.herokuapp.com/travels/${travelId}/accommodation`;
   const token = localStorage.getItem("accessToken");
   const navigate = useNavigate();
 

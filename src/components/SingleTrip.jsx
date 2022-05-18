@@ -34,7 +34,7 @@ const SingleTrip = ({
   setTripChanged,
   index,
 }) => {
-  const url = "http://localhost:3001/travels";
+  const url = "https://personal-travel-book.herokuapp.com/travels";
   const token = localStorage.getItem("accessToken");
   const navigate = useNavigate();
   const [selected, setSelected] = useState(false);

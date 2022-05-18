@@ -15,7 +15,7 @@ const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
 
   const [newEnteredPlace, setNewEnteredPlace] = useState("");
 
-  const url = `http://localhost:3001/itinerary/${itineraryid}/place`;
+  const url = `https://personal-travel-book.herokuapp.com/itinerary/${itineraryid}/place`;
   const closeEditPlace = () => setEditPlace(false);
   const showEditPlace = async () => {
     setEditPlace(true);
