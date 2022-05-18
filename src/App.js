@@ -23,7 +23,7 @@ import AddAccomodation from "./components/AddAccomodation";
 import SingleAccommodation from "./components/SingleAccommodation";
 
 function App() {
-  const url = "http://localhost:3001/users/me";
+  const url = "https://personal-travel-book.herokuapp.com/users/me";
   const [userId, setUserId] = useState("");
   const [userChanged, setUserChanged] = useState(0);
 
