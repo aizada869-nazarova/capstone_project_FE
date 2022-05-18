@@ -138,7 +138,7 @@ const EditVisitedCountry = ({
             {cityName}, {countryName}
           </Card.Text>
 
-          <Card.Text>{format(parseISO(date), "EEEE MMM do")}</Card.Text>
+          <Card.Text>{format(parseISO(date), "MMM do y")}</Card.Text>
           <div
             className="d-flex flex-wrap justify-content-end"
             style={{ gap: "10px" }}
@@ -166,7 +166,7 @@ const EditVisitedCountry = ({
                 setSelectedTrip(id);
               }}
             >
-              <DragIndicatorIcon fontSize="medium" />
+              <DragIndicatorIcon fontSize="medium" className="color_icon" />
             </IconButton>
           </div>
         </Card.Body>
@@ -180,12 +180,12 @@ const EditVisitedCountry = ({
           <Form onSubmit={handleSubmit}>
             <Form.Row className="justify-content-between">
               <Col xs={12} md={6}>
-                <Form.Label htmlFor="inlineFormInput" srOnly>
+                <Form.Label htmlFor="visitedcity" srOnly>
                   City
                 </Form.Label>
                 <Form.Control
                   className="mb-2"
-                  id="inlineFormInput"
+                  id="visitedcity"
                   placeholder="City"
                   type="text"
                   value={newCityName}
@@ -194,12 +194,12 @@ const EditVisitedCountry = ({
                 />
               </Col>
               <Col xs={12} md={6}>
-                <Form.Label htmlFor="inlineFormInput" srOnly>
+                <Form.Label htmlFor="visitedcountry" srOnly>
                   Country
                 </Form.Label>
                 <Form.Control
                   className="mb-2"
-                  id="inlineFormInput"
+                  id="visitedcountry"
                   placeholder="Country"
                   type="text"
                   value={newCountryName}
@@ -219,7 +219,8 @@ const EditVisitedCountry = ({
                   id="inlineFormInput"
                   placeholder="Date"
                   type="date"
-                  value={newDate}
+                  max={new Date()}
+                  value={newDate.slice(0, 10)}
                   onChange={(e) => setNewDate(e.target.value)}
                 />
               </Col>

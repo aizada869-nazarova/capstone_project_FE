@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Card.css";
 import "../styles/Home.css";
-import { Container, Form, Button, Col, Row, Modal } from "react-bootstrap";
+import {
+  Container,
+  Form,
+  Button,
+  Col,
+  Row,
+  Modal,
+  FormControl,
+} from "react-bootstrap";
 
 import EditVisitedCountry from "./EditVisitedCountry";
 import NavbarHome from "./NavbarHome";
@@ -59,6 +67,10 @@ const AddVisitedCountry = ({ newUserId }) => {
     } catch (error) {
       console.error(error, "from catch");
     }
+    setCityName("");
+    setCountryName("");
+    setDate("");
+    setDuration("");
   };
 
   const fetchTrips = async () => {
@@ -160,13 +172,13 @@ const AddVisitedCountry = ({ newUserId }) => {
             <Modal.Body>
               <Form onSubmit={handleSubmit}>
                 <Form.Row className="justify-content-between">
-                  <Col xs="auto">
-                    <Form.Label htmlFor="inlineFormInput" srOnly>
+                  <Col xs={12} md={6}>
+                    <Form.Label htmlFor="visited City" srOnly>
                       City
                     </Form.Label>
                     <Form.Control
                       className="mb-2"
-                      id="inlineFormInput"
+                      id="visited City"
                       placeholder="City"
                       type="text"
                       value={cityName}
@@ -174,13 +186,13 @@ const AddVisitedCountry = ({ newUserId }) => {
                       required
                     />
                   </Col>
-                  <Col xs="auto">
-                    <Form.Label htmlFor="inlineFormInput" srOnly>
+                  <Col xs={12} md={6}>
+                    <Form.Label htmlFor="visited country" srOnly>
                       Country
                     </Form.Label>
                     <Form.Control
                       className="mb-2"
-                      id="inlineFormInput"
+                      id="visitedCountry"
                       placeholder="Country"
                       type="text"
                       value={countryName}
@@ -191,26 +203,27 @@ const AddVisitedCountry = ({ newUserId }) => {
                 </Form.Row>
 
                 <Form.Row className="justify-content-between">
-                  <Col xs="auto">
+                  <Col xs={12} md={6}>
                     <Form.Label htmlFor="inlineFormInput" srOnly>
                       Date
                     </Form.Label>
-                    <Form.Control
+                    <FormControl
                       className="mb-2"
-                      id="inlineFormInput"
+                      id="start date"
                       placeholder="Date"
                       type="date"
+                      max={new Date()}
                       value={date}
                       onChange={(e) => setDate(e.target.value)}
                     />
                   </Col>
-                  <Col xs="auto">
-                    <Form.Label htmlFor="inlineFormInput" srOnly>
+                  <Col xs={12} md={6}>
+                    <Form.Label htmlFor="number" srOnly>
                       number
                     </Form.Label>
                     <Form.Control
                       className="mb-2"
-                      id="inlineFormInput"
+                      id="number"
                       placeholder="Duration"
                       type="number"
                       value={duration}
@@ -218,7 +231,7 @@ const AddVisitedCountry = ({ newUserId }) => {
                     />
                   </Col>
 
-                  <Col xs="auto">
+                  <Col xs={12}>
                     <Button
                       type="submit"
                       className="mb-2"

@@ -35,4 +35,5 @@
 .table-bordered {
   border: none !important;
   margin-bottom: 0;
+  max-width: 100%;
 }

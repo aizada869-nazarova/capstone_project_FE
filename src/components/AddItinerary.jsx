@@ -53,6 +53,7 @@ function AddItinerary() {
     } catch (error) {
       console.error(error, "from catch");
     }
+    setSingleItinerary("");
   };
 
   const fetchTrips = async () => {
@@ -111,7 +112,7 @@ function AddItinerary() {
                       placeholder="enter day"
                       aria-label="enter day"
                       aria-describedby="enter day"
-                      name="nameOfItem"
+                      name="itinerary"
                       value={singleItinerary}
                       onChange={(e) => setSingleItinerary(e.target.value)}
                       required

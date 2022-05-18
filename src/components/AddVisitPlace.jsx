@@ -51,6 +51,7 @@ const AddVisitPlace = (props) => {
     } catch (error) {
       console.error(error, "from catch");
     }
+    setSinglePlace("");
   };
 
   const fetchToVisitPlaces = async () => {
@@ -132,22 +133,16 @@ const AddVisitPlace = (props) => {
             <Row> */}
         {toVisitPlaces &&
           toVisitPlaces.map(({ place, _id: id }, i) => (
-            // <Col
-            //   xs={12}
-            //   md={3}
-            //   lg={4}
-            //   key={id}
-            //   className="d-flex justify-content-center"
-            // >
-            <SinglePlace
-              itineraryid={itinId}
-              index={i}
-              singlePlace={place}
-              id={id}
-              tripChanged={tripChanged}
-              setTripChanged={() => setTripChanged((count) => count + 1)}
-            />
-            // </Col>
+            <div key={id}>
+              <SinglePlace
+                itineraryid={itinId}
+                index={i}
+                singlePlace={place}
+                id={id}
+                tripChanged={tripChanged}
+                setTripChanged={() => setTripChanged((count) => count + 1)}
+              />
+            </div>
           ))}
         {/* </Row> */}
       </Container>

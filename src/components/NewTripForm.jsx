@@ -105,6 +105,16 @@ const NewTripForm = ({ userId }) => {
       setIsError(true);
       setIsLoading(false);
     }
+    setFromCityName("");
+    setFromCountryName("");
+    setToCityName("");
+    setToCountryName("");
+    setDepartureDate("");
+    setDepartureTime("");
+    setArrivalDate("");
+    setArrivalTime("");
+    setTransport("");
+    setTravelWith("");
   };
 
   useEffect(() => {
@@ -200,7 +210,7 @@ const NewTripForm = ({ userId }) => {
               <Col xs="6" md="5">
                 <Form.Control
                   className="mb-2"
-                  id="inlineFormInput"
+                  id="city from"
                   placeholder="City"
                   type="text"
                   value={fromCityName}
@@ -214,7 +224,7 @@ const NewTripForm = ({ userId }) => {
                 </Form.Label> */}
                 <Form.Control
                   className="mb-2"
-                  id="inlineFormInput"
+                  id="country"
                   placeholder="Country"
                   type="text"
                   value={fromCountryName}
@@ -231,7 +241,7 @@ const NewTripForm = ({ userId }) => {
               <Col xs="6" md="5">
                 <Form.Control
                   className="mb-2"
-                  id="inlineFormInput"
+                  id="city to"
                   placeholder="City"
                   type="text"
                   value={toCityName}
@@ -245,7 +255,7 @@ const NewTripForm = ({ userId }) => {
                 </Form.Label> */}
                 <Form.Control
                   className="mb-2"
-                  id="inlineFormInput"
+                  id="country to"
                   placeholder="Country"
                   type="text"
                   value={toCountryName}
@@ -286,9 +296,9 @@ const NewTripForm = ({ userId }) => {
                     </InputGroup.Text>
                   </InputGroup.Prepend>
                   <FormControl
-                    id="inlineFormInputGroup"
-                    placeholder="Departure"
+                    id="start"
                     type="date"
+                    min={new Date()}
                     value={departureDate}
                     onChange={(e) => setDepartureDate(e.target.value)}
                     required

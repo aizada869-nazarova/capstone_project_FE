@@ -44,7 +44,7 @@ function MainHome() {
         </Row>
       </div>
       <div className="hero-image">
-        <img src={travel} alt="travel" />
+        <img className="main_image" src={travel} alt="travel" />
       </div>
     </Container>
   );

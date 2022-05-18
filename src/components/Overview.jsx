@@ -4,6 +4,7 @@ import "../styles/Overview.css";
 import NavbarOfTrip from "./NavbarOfTrip";
 import { format, parseISO } from "date-fns";
 import Moment from "moment";
+import AddAccomodation from "./AddAccomodation";
 const Overview = ({ trip }) => {
   return (
     <>
@@ -13,7 +14,6 @@ const Overview = ({ trip }) => {
             <NavbarOfTrip />
           </Col>
         </Row>
-
         <Row className="d-flex justify-content-center">
           <Col>
             {" "}
@@ -90,7 +90,8 @@ const Overview = ({ trip }) => {
               </Table>
             </div>
           </Col>
-        </Row>
+        </Row>{" "}
+        <AddAccomodation />
       </Container>
     </>
   );

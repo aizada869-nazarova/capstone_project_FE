@@ -178,7 +178,7 @@ const SingleList = ({
                 <Form.Control
                   as="select"
                   name="cathegory"
-                  value={category}
+                  value={newCategory}
                   onChange={(e) => setNewCategory(e.target.value)}
                   required
                 >

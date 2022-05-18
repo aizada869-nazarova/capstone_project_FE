@@ -19,6 +19,8 @@ import Overview from "./components/Overview";
 import Checklist from "./components/Checklist";
 import { useEffect, useState } from "react";
 import UploadPic from "./components/UploadPic";
+import AddAccomodation from "./components/AddAccomodation";
+import SingleAccommodation from "./components/SingleAccommodation";
 
 function App() {
   const url = "http://localhost:3001/users/me";
@@ -94,6 +96,14 @@ function App() {
             element={<SinglePlace />}
           />
           <Route path="/travels/:travelId/overview" element={<Overview />} />
+          <Route
+            path="/travels/:travelId/accommodation"
+            element={<AddAccomodation />}
+          />
+          <Route
+            path="/travels/:travelId/accommodation/:accommodationId"
+            element={<SingleAccommodation />}
+          />
           <Route path="/travels/:travelId/checklist" element={<Checklist />} />
 
           {/* <Route path="/profile/me" element={<MyProfile />} /> */}

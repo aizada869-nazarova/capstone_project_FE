@@ -51,6 +51,7 @@ const AddTodoLists = (props) => {
     } catch (error) {
       console.error(error, "from catch");
     }
+    setSingleTodoList("");
   };
 
   const fetchTodoLists = async () => {

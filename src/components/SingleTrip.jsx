@@ -204,7 +204,7 @@ const SingleTrip = ({
                 setSelectedTrip(id);
               }}
             >
-              <DragIndicatorIcon fontSize="medium" />
+              <DragIndicatorIcon fontSize="medium" className="color_icon" />
             </IconButton>
           </div>
         </Card.Body>

@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   Button,
-  Image,
-  ListGroup,
   Form,
-  Card,
-  Nav,
-  Link,
   Container,
   Row,
   Col,
@@ -60,6 +55,7 @@ function PackingList() {
     } catch (error) {
       console.error(error, "from catch");
     }
+    setNameOfItem("");
   };
 
   const fetchPackingLists = async () => {
@@ -115,9 +111,10 @@ function PackingList() {
                     </InputGroup.Prepend>
                     <FormControl
                       placeholder="Name of item"
-                      aria-label="Name of item"
+                      aria-label="paking list"
                       aria-describedby="Name of item"
-                      name="nameOfItem"
+                      id="paking list"
+                      name="name"
                       value={nameOfItem}
                       onChange={(e) => setNameOfItem(e.target.value)}
                       required
@@ -152,9 +149,9 @@ function PackingList() {
                 <Col xs={"auto"}>
                   <Button
                     type="submit"
-                    variant="outline"
+                    variant="warning"
                     className="mb-4"
-                    style={{ background: "#fc6401", width: "6rem" }}
+                    style={{ width: "6rem" }}
                   >
                     <strong>Add</strong>
                   </Button>

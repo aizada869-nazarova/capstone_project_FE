@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 // import "../styles/Overview.css"
 import Overview from "./Overview";
+import AddAccomodation from "./AddAccomodation";
 
 const TripDetails = () => {
   const [trip, setTrip] = useState([]);

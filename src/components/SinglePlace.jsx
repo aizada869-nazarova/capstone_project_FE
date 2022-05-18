@@ -102,8 +102,6 @@ const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
           <ListGroup.Item id="list_group">
             <Row>
               <Col className="d-flex">
-                {/* <Form.Check aria-label="option 1" />{" "}
-                <strong>{singlePlace}</strong> */}
                 <label>
                   <input type="checkbox" />
                   <i></i>
@@ -125,6 +123,13 @@ const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
                     style={{ fontsize: "initial" }}
                   />
                 </IconButton>
+                {/* <IconButton
+                  size="small"
+                  aria-label="add"
+                  onClick={handleDeletePlace}
+                >
+                  <FaTrashAlt className="trash_icon" />
+                </IconButton> */}
               </Col>
             </Row>
           </ListGroup.Item>

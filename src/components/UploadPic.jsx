@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Form } from "react-bootstrap";
+import { Form, Card, Container, Row, Col, Image } from "react-bootstrap";
 
 function UploadPic() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -62,7 +62,21 @@ function UploadPic() {
   };
   return (
     <>
-      {selectedFile && <img src={imageSrc} className="w-100" />}
+      {selectedFile && (
+        <Container>
+          <Row>
+            <Col xs={6} md={4}>
+              <Image src={imageSrc} rounded />
+            </Col>
+            <Col xs={6} md={4}>
+              <Image src={imageSrc} roundedCircle />
+            </Col>
+            <Col xs={6} md={4}>
+              <Image src={imageSrc} thumbnail />
+            </Col>
+          </Row>
+        </Container>
+      )}
       <Form.Group>
         <Form.File
           className="position-relative"
