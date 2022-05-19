@@ -130,6 +130,8 @@ const AddVisitedCountry = ({ newUserId }) => {
             className="d-flex justify-content-center"
             style={{ rowGap: "10px" }}
           >
+            {isLoading === true && <Loading />}
+            {isError === true && <Error />}
             {trips.length === 0 && isError === false && isLoading === false ? (
               <h3 style={{ color: " #eff871" }}>
                 You have not added any visited country yet!

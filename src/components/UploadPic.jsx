@@ -62,39 +62,45 @@ function UploadPic() {
   };
   return (
     <>
-      {selectedFile && (
-        <Container>
-          <Row>
-            {/* <Col xs={6} md={4}>
-              <Image src={imageSrc} rounded />
-            </Col>
-            <Col xs={6} md={4}>
-              <Image src={imageSrc} roundedCircle />
-            </Col> */}
-            <Col xs={6} md={6}>
-              <Image src={imageSrc} thumbnail />
-            </Col>
-          </Row>
-        </Container>
-      )}
-      <Form.Group>
-        <Form.File
-          className="position-relative"
-          required
-          name="file"
-          label="File"
-          type="file"
-          //   isInvalid={!!errors.file}
-          //   feedback={errors.file}
-          id="validationFormik107"
-          feedbackTooltip
-          onChange={(e) => {
-            setSelectedFile(e.target.files[0]);
-            setImageSrc(URL.createObjectURL(e.target.files[0]));
-            console.log(selectedFile);
-          }}
-        />
-      </Form.Group>
+      <Container>
+        <Row className="d-flex justify-content-center">
+          <Col>
+            <div className="title_details" style={{ color: "black" }}>
+              Upload pictures
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} className="d-flex justify-content-center mt-3">
+            <Form.Group>
+              <Form.File
+                className="position-relative"
+                required
+                name="file"
+                type="file"
+                //   isInvalid={!!errors.file}
+                //   feedback={errors.file}
+                id="validationFormik107"
+                feedbackTooltip
+                onChange={(e) => {
+                  setSelectedFile(e.target.files[0]);
+                  setImageSrc(URL.createObjectURL(e.target.files[0]));
+                  console.log(selectedFile);
+                }}
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+        {selectedFile && (
+          <Container>
+            <Row>
+              <Col xs={6} md={6}>
+                <Image src={imageSrc} thumbnail />
+              </Col>
+            </Row>
+          </Container>
+        )}
+      </Container>
     </>
   );
 }
