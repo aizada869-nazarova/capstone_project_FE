@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import SingleAccommodation from "./SingleAccommodation";
 import PhoneAndroidIcon from "@material-ui/icons/PhoneAndroid";
+import Error from "./Error";
 
 import {
   Container,
@@ -32,6 +33,8 @@ function AddAccomodation() {
   const [checkOutTime, setCheckOutTime] = useState("");
   const [contact, setContact] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
+
+  const [isError, setIsError] = useState(false);
 
   const closeAddAcc = () => setAddAccomm(false);
   const showAddAcc = () => setAddAccomm(true);
@@ -185,7 +188,7 @@ function AddAccomodation() {
             </Form.Row>
 
             <Form.Row>
-              <Col xs={8}>
+              <Col xs={12}>
                 <InputGroup className="mb-2">
                   <InputGroup.Prepend>
                     <InputGroup.Text> Check-in </InputGroup.Text>
@@ -200,18 +203,7 @@ function AddAccomodation() {
                   />
                 </InputGroup>
               </Col>
-              <Col>
-                <Form.Control
-                  placeholder="Time"
-                  type="time"
-                  value={checkInTime}
-                  onChange={(e) => setCheckInTime(e.target.value)}
-                />
-              </Col>
-            </Form.Row>
-
-            <Form.Row>
-              <Col xs={8}>
+              <Col xs={12}>
                 <InputGroup className="mb-2">
                   <InputGroup.Prepend>
                     <InputGroup.Text>Check-out</InputGroup.Text>
@@ -224,17 +216,24 @@ function AddAccomodation() {
                   />
                 </InputGroup>
               </Col>
-              <Col>
+              {/* <Col>
                 <Form.Control
-                  placeholder="Time"
+                  type="time"
+                  value={checkInTime}
+                  onChange={(e) => setCheckInTime(e.target.value)}
+                />
+              </Col> */}
+
+              {/* <Col>
+                <Form.Control
                   type="time"
                   value={checkOutTime}
                   onChange={(e) => setCheckOutTime(e.target.value)}
                 />
-              </Col>
+              </Col> */}
             </Form.Row>
             <Form.Row>
-              <Col xs={6}>
+              <Col xs={12} md={6}>
                 <InputGroup className="mb-2">
                   <InputGroup.Prepend>
                     <InputGroup.Text>
@@ -244,13 +243,13 @@ function AddAccomodation() {
                   <FormControl
                     id="start"
                     placeholder="enter phone number"
-                    type="text"
+                    type="number"
                     value={contact}
                     onChange={(e) => setContact(e.target.value)}
                   />
                 </InputGroup>
               </Col>
-              <Col xs={6}>
+              <Col xs={12} md={6}>
                 <InputGroup className="mb-2">
                   <InputGroup.Prepend>
                     <InputGroup.Text>URL</InputGroup.Text>

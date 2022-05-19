@@ -31,7 +31,7 @@ const SingleItinerary = ({
   const showEditItinerary = async () => {
     setEditItinerary(true);
     try {
-      const response = await fetch(`${url}/${selectedItinerary}`, {
+      const response = await fetch(`${url}/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -188,13 +188,13 @@ const SingleItinerary = ({
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Row className="justify-content-between">
-              <Col xs="auto">
-                <Form.Label htmlFor="inlineFormInput" srOnly>
+              <Col xs={12}>
+                <Form.Label htmlFor="itinSingle" srOnly>
                   Planning your day
                 </Form.Label>
                 <Form.Control
                   className="mb-2"
-                  id="inlineFormInput"
+                  id="itinSingle"
                   placeholder="enter Day "
                   type="text"
                   value={newEnteredItinerary}
@@ -206,18 +206,15 @@ const SingleItinerary = ({
 
             <div className="d-flex justify-content-between">
               <Button
-                // style={{background: "#ce9f11", border: "none"}}
-                type="submit"
-              >
-                Save changes
-              </Button>
-              <Button
                 variant="danger"
                 type="button"
                 className="mr-4"
                 onClick={handleDeleteItinerary}
               >
                 <FaTrashAlt />
+              </Button>
+              <Button type="submit" variant="warning">
+                Save changes
               </Button>
             </div>
           </Form>

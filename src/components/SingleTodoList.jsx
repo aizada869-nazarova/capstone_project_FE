@@ -26,7 +26,7 @@ const SingleTodoList = ({
   const showEditPlace = async () => {
     setEditTodo(true);
     try {
-      const response = await fetch(`${url}/${selectedTodo}`, {
+      const response = await fetch(`${url}/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -121,7 +121,6 @@ const SingleTodoList = ({
                   onClick={() => {
                     setSelectedTodo(id);
                     showEditPlace();
-                    // navigate(`/${id}`)
                   }}
                 >
                   <FaRegEdit
@@ -143,13 +142,13 @@ const SingleTodoList = ({
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Row className="justify-content-between">
-              <Col xs="auto">
-                <Form.Label htmlFor="inlineFormInput" srOnly>
-                  enter place and activities
+              <Col xs={12}>
+                <Form.Label htmlFor="todolist" srOnly>
+                  todo list
                 </Form.Label>
                 <Form.Control
                   className="mb-2"
-                  id="inlineFormInput"
+                  id="todolist"
                   placeholder="enter to do list..."
                   type="text"
                   value={newEnteredTodo}
@@ -161,18 +160,19 @@ const SingleTodoList = ({
 
             <div className="d-flex justify-content-between">
               <Button
-                // style={{background: "#ce9f11", border: "none"}}
-                type="submit"
-              >
-                Save changes
-              </Button>
-              <Button
                 variant="danger"
                 type="button"
                 className="mr-4"
                 onClick={handleDeletePlace}
               >
                 <FaTrashAlt />
+              </Button>
+              <Button
+                // style={{background: "#ce9f11", border: "none"}}
+                type="submit"
+                variant="warning"
+              >
+                Save changes
               </Button>
             </div>
           </Form>

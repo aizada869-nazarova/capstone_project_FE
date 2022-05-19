@@ -11,6 +11,8 @@ import {
 } from "react-bootstrap";
 import SingleItinerary from "./SingleItinerary";
 import NavbarOfTrip from "./NavbarOfTrip";
+import Loading from "./Loading";
+import Error from "./Error";
 
 function AddItinerary() {
   let { travelId } = useParams();
@@ -23,6 +25,8 @@ function AddItinerary() {
 
   const [singleItinerary, setSingleItinerary] = useState("");
   const [travel, setTravel] = useState(travelId);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,7 +50,7 @@ function AddItinerary() {
           fetchTrips();
           setTripChanged((count) => count + 1);
         } else {
-          alert("fetch failed");
+          alert("fetch faied");
         }
       });
       console.log("enteredValue", plan);
@@ -70,10 +74,16 @@ function AddItinerary() {
         const newData = await response.json();
         console.log(newData);
         setItineraries(newData);
+        setIsLoading(false);
+        setIsError(false);
       } else {
+        setIsError(true);
+        setIsLoading(false);
         console.log("fetch failed on line 86");
       }
     } catch (error) {
+      setIsError(true);
+      setIsLoading(false);
       console.log("I am catch error from line 90");
     }
   };
@@ -85,6 +95,8 @@ function AddItinerary() {
   return (
     <>
       <Container fluid className="paking_back">
+        {isLoading === true && <Loading />}
+        {isError === true && <Error />}
         <Row>
           <Col>
             <NavbarOfTrip />

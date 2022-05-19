@@ -95,6 +95,7 @@ const NewTripForm = ({ userId }) => {
         console.log(newData);
         setTrips(newData);
         setIsLoading(false);
+        setIsError(false);
       } else {
         console.log("fetch failed on line 86");
         setIsError(true);
@@ -141,6 +142,7 @@ const NewTripForm = ({ userId }) => {
       {/* <Container className="d-flex justify-content-center"> */}
       <Row className="d-flex justify-content-center" style={{ rowGap: "10px" }}>
         {isLoading === true && <Loading />}
+        {isError === true && <Error />}
         {trips.length === 0 && isError === false && isLoading === false ? (
           <h3 style={{ color: " #eff871" }}>
             You have not added any trip yet!
@@ -288,7 +290,7 @@ const NewTripForm = ({ userId }) => {
             </Form.Row>
 
             <Form.Row>
-              <Col xs={8}>
+              <Col xs={12} md={8}>
                 <InputGroup className="mb-2">
                   <InputGroup.Prepend>
                     <InputGroup.Text>
@@ -309,6 +311,7 @@ const NewTripForm = ({ userId }) => {
                 <Form.Control
                   placeholder="Time"
                   type="time"
+                  className="mb-2"
                   value={departureTime}
                   onChange={(e) => setDepartureTime(e.target.value)}
                 />
@@ -316,7 +319,7 @@ const NewTripForm = ({ userId }) => {
             </Form.Row>
 
             <Form.Row>
-              <Col xs={8}>
+              <Col xs={12} md={8}>
                 <InputGroup className="mb-2">
                   <InputGroup.Prepend>
                     <InputGroup.Text>
@@ -338,6 +341,7 @@ const NewTripForm = ({ userId }) => {
                 <Form.Control
                   placeholder="Time"
                   type="time"
+                  className="mb-2"
                   value={arrivalTime}
                   onChange={(e) => setArrivalTime(e.target.value)}
                 />

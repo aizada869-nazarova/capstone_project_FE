@@ -41,7 +41,7 @@ const SingleList = ({
   const showEditTrip = async () => {
     setEditList(true);
     try {
-      const response = await fetch(`${url}/${selectedList}`, {
+      const response = await fetch(`${url}/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -194,10 +194,7 @@ const SingleList = ({
             </Form.Row>
 
             <div className="d-flex justify-content-between">
-              <Button
-                // style={{background: "#ce9f11", border: "none"}}
-                type="submit"
-              >
+              <Button variant="warning" type="submit">
                 Save changes
               </Button>
               <Button

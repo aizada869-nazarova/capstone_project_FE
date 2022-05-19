@@ -13,6 +13,8 @@ import SingleList from "./SingleList";
 import CardTravelIcon from "@material-ui/icons/CardTravel";
 import "../styles/Background.css";
 import NavbarOfTrip from "./NavbarOfTrip";
+import Loading from "./Loading";
+import Error from "./Error";
 
 function PackingList() {
   let { travelId } = useParams();
@@ -25,6 +27,9 @@ function PackingList() {
   const [tripChanged, setTripChanged] = useState(0);
   const [nameOfItem, setNameOfItem] = useState("");
   const [category, setCategory] = useState("");
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,10 +76,16 @@ function PackingList() {
         const newData = await response.json();
         console.log(newData);
         setPakinglists(newData);
+        setIsLoading(false);
+        setIsError(false);
       } else {
+        setIsError(true);
+        setIsLoading(false);
         console.log("fetch failed on line 30");
       }
     } catch (error) {
+      setIsError(true);
+      setIsLoading(false);
       console.log("I am catch error from line 33", error);
     }
   };
@@ -159,6 +170,8 @@ function PackingList() {
               </Row>
             </Form>
             <Row className="d-flex">
+              {isLoading === true && <Loading />}
+              {isError === true && <Error />}
               {packinglists &&
                 packinglists.map(({ nameOfItem, _id, category }, i) => (
                   <Col

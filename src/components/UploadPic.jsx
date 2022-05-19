@@ -65,13 +65,13 @@ function UploadPic() {
       {selectedFile && (
         <Container>
           <Row>
-            <Col xs={6} md={4}>
+            {/* <Col xs={6} md={4}>
               <Image src={imageSrc} rounded />
             </Col>
             <Col xs={6} md={4}>
               <Image src={imageSrc} roundedCircle />
-            </Col>
-            <Col xs={6} md={4}>
+            </Col> */}
+            <Col xs={6} md={6}>
               <Image src={imageSrc} thumbnail />
             </Col>
           </Row>

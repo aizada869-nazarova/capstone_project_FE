@@ -20,7 +20,7 @@ const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
   const showEditPlace = async () => {
     setEditPlace(true);
     try {
-      const response = await fetch(`${url}/${selectedPlace}`, {
+      const response = await fetch(`${url}/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -143,13 +143,13 @@ const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Row className="justify-content-between">
-              <Col xs="auto">
-                <Form.Label htmlFor="inlineFormInput" srOnly>
+              <Col xs={12}>
+                <Form.Label htmlFor="visitplace" srOnly>
                   enter place and activities
                 </Form.Label>
                 <Form.Control
                   className="mb-2"
-                  id="inlineFormInput"
+                  id="visitplace"
                   placeholder="enter place to visit"
                   type="text"
                   value={newEnteredPlace}
@@ -161,18 +161,15 @@ const SinglePlace = ({ id, singlePlace, itineraryid, setTripChanged }) => {
 
             <div className="d-flex justify-content-between">
               <Button
-                // style={{background: "#ce9f11", border: "none"}}
-                type="submit"
-              >
-                Save changes
-              </Button>
-              <Button
                 variant="danger"
                 type="button"
                 className="mr-4"
                 onClick={handleDeletePlace}
               >
                 <FaTrashAlt />
+              </Button>
+              <Button variant="warning" type="submit">
+                Save changes
               </Button>
             </div>
           </Form>

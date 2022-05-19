@@ -57,7 +57,7 @@ const SingleTrip = ({
   const showEditTrip = async () => {
     setEditTrip(true);
     try {
-      const response = await fetch(`${url}/${selectedTrip}`, {
+      const response = await fetch(`${url}/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -301,7 +301,7 @@ const SingleTrip = ({
             </Form.Row>
 
             <Form.Row>
-              <Col xs={8}>
+              <Col xs={12} md={8}>
                 <InputGroup className="mb-2">
                   <InputGroup.Prepend>
                     <InputGroup.Text>
@@ -322,6 +322,7 @@ const SingleTrip = ({
                 <Form.Control
                   placeholder="Time"
                   type="time"
+                  className="mb-2"
                   value={newDepartureTime}
                   onChange={(e) => setNewDepartureTime(e.target.value)}
                 />
@@ -329,7 +330,7 @@ const SingleTrip = ({
             </Form.Row>
 
             <Form.Row>
-              <Col xs={8}>
+              <Col xs={6} md={8}>
                 <InputGroup className="mb-2">
                   <InputGroup.Prepend>
                     <InputGroup.Text>
@@ -351,6 +352,7 @@ const SingleTrip = ({
                 <Form.Control
                   placeholder="Time"
                   type="time"
+                  className="mb-2"
                   value={newArrivalTime}
                   onChange={(e) => setNewArrivalTime(e.target.value)}
                 />

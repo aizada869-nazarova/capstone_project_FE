@@ -54,7 +54,7 @@ const SingleAccommodation = ({
   const showEditTrip = async () => {
     setEditTrip(true);
     try {
-      const response = await fetch(`${url}/${selected}`, {
+      const response = await fetch(`${url}/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -107,7 +107,7 @@ const SingleAccommodation = ({
     };
 
     try {
-      const response = await fetch(`${url}/${selected}`, {
+      const response = await fetch(`${url}/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -154,7 +154,7 @@ const SingleAccommodation = ({
     <>
       <Container>
         <Row>
-          <Col xs={12} className="d-flex justify-content-center mt-3">
+          <Col xs={12} className="d-flex justify-content-center mt-3 pb-5">
             <div id="overview_card">
               <Table
                 striped
@@ -169,10 +169,19 @@ const SingleAccommodation = ({
                     </td>
                     <td className="white_text">{placeToStay}</td>
                     <td className="orange_text">
+                      <strong>Contact</strong>
+                    </td>
+                    <td className="white_text">{contact}</td>
+                  </tr>
+                  <tr>
+                    <td className="orange_text">
                       <strong>Address:</strong>
                     </td>
-                    <td className="white_text">{address}</td>
+                    <td className="white_text" colSpan="3">
+                      {address}
+                    </td>
                   </tr>
+
                   <tr>
                     <td className="orange_text">
                       <strong>Check-in</strong>
@@ -180,34 +189,33 @@ const SingleAccommodation = ({
                     <td className="white_text">
                       {Moment(checkIn).format("DD-MM-YYYY")}
                     </td>
-                    <td className="orange_text">
+                    {/* <td className="orange_text">
                       <strong>Check-in time </strong>
                     </td>
-                    <td className="white_text">{checkInTime}</td>
-                  </tr>
-                  <tr>
+                    <td className="white_text">{checkInTime}</td> */}
                     <td className="orange_text">
                       <strong>Check-out</strong>
                     </td>
                     <td className="white_text">
                       {Moment(checkOut).format("DD-MM-YYYY")}
                     </td>
-                    <td className="orange_text">
+                  </tr>
+                  <tr>
+                    {/* <td className="orange_text">
                       <strong>check-out time</strong>
                     </td>
 
                     <td className="white_text">{checkOutTime}</td>
                   </tr>
-                  <tr>
-                    <td className="orange_text">
-                      <strong>Contact</strong>
-                    </td>
-                    <td className="white_text">{contact}</td>
+                  <tr> */}
+
                     <td className="orange_text">
                       <strong>Link</strong>
                     </td>
 
-                    <td className="white_text">{websiteUrl} </td>
+                    <td className="white_text" colSpan="3">
+                      {websiteUrl}{" "}
+                    </td>
                   </tr>
                 </tbody>
               </Table>
@@ -220,9 +228,14 @@ const SingleAccommodation = ({
                   onClick={() => {
                     showEditTrip();
                     setSelected(id);
+                    console.log(setSelected(id));
+                    console.log("next", id);
                   }}
                 >
-                  <DragIndicatorIcon fontSize="medium" className="color_icon" />
+                  <DragIndicatorIcon
+                    fontSize="medium"
+                    className="color_icon m-2"
+                  />
                 </IconButton>
               </Col>
             </div>
@@ -259,7 +272,7 @@ const SingleAccommodation = ({
             </Form.Row>
 
             <Form.Row>
-              <Col xs={8}>
+              <Col xs={12}>
                 <InputGroup className="mb-2">
                   <InputGroup.Prepend>
                     <InputGroup.Text>Check-in</InputGroup.Text>
@@ -274,18 +287,18 @@ const SingleAccommodation = ({
                   />
                 </InputGroup>
               </Col>
-              <Col>
+              {/* <Col>
                 <Form.Control
                   placeholder="Time"
                   type="time"
                   value={newCheckInTime}
                   onChange={(e) => setNewCheckInTime(e.target.value)}
                 />
-              </Col>
+              </Col> */}
             </Form.Row>
 
             <Form.Row>
-              <Col xs={8}>
+              <Col xs={12}>
                 <InputGroup className="mb-2">
                   <InputGroup.Prepend>
                     <InputGroup.Text>Check-out</InputGroup.Text>
@@ -298,17 +311,17 @@ const SingleAccommodation = ({
                   />
                 </InputGroup>
               </Col>
-              <Col>
+              {/* <Col>
                 <Form.Control
                   placeholder="Time"
                   type="time"
                   value={newCheckOutTime}
                   onChange={(e) => setNewCheckOutTime(e.target.value)}
                 />
-              </Col>
+              </Col> */}
             </Form.Row>
             <Form.Row>
-              <Col xs={6}>
+              <Col xs={12} md={6}>
                 <InputGroup className="mb-2">
                   <InputGroup.Prepend>
                     <InputGroup.Text></InputGroup.Text>
@@ -316,13 +329,13 @@ const SingleAccommodation = ({
                   <FormControl
                     id="phone"
                     placeholder="enter phone number"
-                    type="text"
+                    type="number"
                     value={newContact}
                     onChange={(e) => setNewContact(e.target.value)}
                   />
                 </InputGroup>
               </Col>
-              <Col xs={6}>
+              <Col xs={12} md={6}>
                 <InputGroup className="mb-2">
                   <InputGroup.Prepend>
                     <InputGroup.Text>URL</InputGroup.Text>
@@ -330,7 +343,7 @@ const SingleAccommodation = ({
                   <FormControl
                     id="url"
                     placeholder="enter the link"
-                    type="text"
+                    type="url"
                     value={newWebsiteUrl}
                     onChange={(e) => setNewWebsiteUrl(e.target.value)}
                   />
