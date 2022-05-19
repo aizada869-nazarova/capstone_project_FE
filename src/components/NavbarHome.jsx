@@ -26,7 +26,7 @@ function NavbarHome() {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href={`/`}>Home</Nav.Link>
-          <Nav.Link href={`/travels`}>Coming trips</Nav.Link>
+          <Nav.Link href={`/travels`}>Trip-planner</Nav.Link>
           <Nav.Link href={`/visitedCountry`}>Past trips</Nav.Link>
         </Nav>
         <Nav>
